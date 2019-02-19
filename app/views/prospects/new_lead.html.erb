@@ -1,0 +1,65 @@
+<div class="col-md-8 col-md-offset-2">
+	<div class="panel panel-gray">
+	  <div class="panel-heading">
+			<h4>New Meeting Scheduled</h4>
+	  </div>
+	  <div class="prospect-show">
+			<%= simple_form_for @prospect, url: new_lead_create_path do |f| %>
+			<%= f.hidden_field :status, value: "Intro Presentation Scheduled" %>		
+
+			<div class="row">
+				<div class="col-md-6"><%= f.input :organization, required: true, autofocus: true, label: "Prospect Company or Organization Name" %></div>
+				<div class="col-md-6"><%= f.input :user_id, required: true, collection: User.collection, label: "Consultant Name", include_blank: false, include_hidden: false %></div>
+			</div>
+			<div class="row">
+				<div class="col-md-8"><%= f.input :street_address %></div>
+				<div class="col-md-4"><%= f.input :address2, label: "Suite # (etc)" %></div>		
+			</div>
+			<div class="row">
+				<div class="col-md-4"><%= f.input :city %></div>
+				<div class="col-md-4"><%= f.input :state, collection: STATES %></div>
+				<div class="col-md-4"><%= f.input :zip %></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><%= f.input :phone %></div>
+				<div class="col-md-4"><%= f.input :website %></div>
+				<div class="col-md-4"><%= f.input :employees, label: "Employees" %></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><%= f.input :contact1_first_name, label: "Contact First Name" %></div>
+				<div class="col-md-4"><%= f.input :contact1_last_name, label: "Last Name" %></div>
+				<div class="col-md-4"><%= f.input :contact1_title, label: "Title" %></div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-2"><%= f.input :intelatek_day, collection: DAYS, label: "Day" %></div>
+				<div class="col-md-4"><%= f.input :intro_presentation_date, :include_blank => true,
+					:default => nil, required: true, as: :date, html5: true, order: [:month, :day, :year] %></div>
+				<div class="col-md-3"><%= f.input :intelatek_time, collection: TIMES, label: "Time" %></div>
+				<div class="col-md-3"><%= f.input :intelatek_timezone, collection: TIMEZONES, label: "TimeZone" %></div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<%= f.input :intelatek_bda, collection: [
+																									'Chris Cunningham',
+																									'James Baler',
+																									'Laura James',
+																									'Michelle Greene',
+																									'Maria Wright',
+																									'Nancy White',
+																									'Rich Davis',
+																									'Scott Nelson'
+																									], label: "IntelaTek BDA" %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12"><%= f.input :intelatek_notes, label: "Notes" %></div>
+			</div>
+		</div>
+    <div class="panel-footer">
+				<%= link_to "Back", prospects_path, class: "btn btn-beige btn-sm" %>
+				<%= f.button :submit, "Submit Meeting", class:"btn btn-slate pull-right" %>
+			<% end %>
+    </div>
+	</div>
+</div>

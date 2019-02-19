@@ -1,0 +1,82 @@
+<div class="col-md-8 col-md-offset-2">
+  
+	<div class="panel panel-gray">
+    <div class="panel-heading">
+  		<h4>Editing: &nbsp; <%= @prospect.organization %></h4>
+    </div>
+    <div class="prospect-show">
+  
+  		<%= simple_form_for @prospect do |f| %>
+
+  			<h4>Company/Organization Info</h4>
+  			<br>
+  			<%= f.input :organization, required: true, autofocus: true, label: "Prospect Company or Organization Name" %>
+  			<br>
+  			<div class="row">
+  				<div class="col-md-8"><%= f.input :street_address %></div>
+  				<div class="col-md-4"><%= f.input :address2, label: "Suite # (etc)" %></div>		
+  			</div>
+  			<br>
+  			<div class="row">
+  				<div class="col-md-4"><%= f.input :city %></div>
+  				<div class="col-md-4"><%= f.input :state, collection: STATES %>
+  				</div>
+  				<div class="col-md-4"><%= f.input :zip %></div>
+  			</div>
+  		  <br>
+  			<div class="row">
+  				<div class="col-md-4"><%= f.input :phone %></div>
+  				<div class="col-md-4"><%= f.input :website %></div>
+  				<div class="col-md-4"><%= f.input :employees, label: "Employees" %></div>
+  			</div>
+  		  <br>
+  			<hr>
+  		  <h4>Contact 1</h4>
+  		  <br>
+  			<div class="row">
+  				<div class="col-md-4"><%= f.input :contact1_first_name, label: "First Name" %></div>
+  				<div class="col-md-4"><%= f.input :contact1_last_name, label: "Last Name" %></div>
+  				<div class="col-md-4"><%= f.input :contact1_title, label: "Title" %></div>
+  			</div>
+  		  <br>
+  			<div class="row">
+  				<div class="col-md-4"><%= f.input :contact1_phone, label: "Direct Phone or Ext" %></div>
+  				<div class="col-md-4"><%= f.input :contact1_mobile, label: "Mobile" %></div>
+  				<div class="col-md-4"><%= f.input :contact1_email, label: "Email" %></div>
+  			</div>
+  		  <br>
+  			<hr>
+  		  <h4>Contact 2</h4>
+  		  <br>
+  			<div class="row">
+  				<div class="col-md-4"><%= f.input :contact2_first_name, label: "First Name" %></div>
+  				<div class="col-md-4"><%= f.input :contact2_last_name, label: "Last Name" %></div>
+  				<div class="col-md-4"><%= f.input :contact2_title, label: "Title" %></div>
+  			</div>
+  		  <br>
+  			<div class="row">
+  				<div class="col-md-4"><%= f.input :contact2_phone, label: "Direct Phone or Ext" %></div>
+  				<div class="col-md-4"><%= f.input :contact2_mobile, label: "Mobile" %></div>
+  				<div class="col-md-4"><%= f.input :contact2_email, label: "Email" %></div>
+  			</div>
+  			<%= f.input :prospect_note, label: "Notes" %>
+
+        <br>
+        <hr>
+	      <%= render 'prospects/edit_cps', f: f %>
+
+        <br>
+        <hr>
+	      <%= render 'prospects/edit_hcs', f: f %>
+
+
+    	</div>
+    	
+      <div class="panel-footer">
+    		<%= link_to "Back", prospect_path, class: "btn btn-default" %>
+          <%= f.button :submit, class:"btn btn-slate" %>
+        <% end %>
+      </div>
+    	
+  </div>
+</div>

@@ -1,0 +1,82 @@
+    <% if @prospect.hcs_prospect == false %>
+      <%= link_to "Add HealthCare Savings Service", hcs_path(@prospect), class: "btn btn-info" %>
+    <% else %>
+      <hr>
+      <div class="row">
+        <div class="col-md-4">
+          <h4><strong>HealthCare Savings</strong></h4>
+        </div>
+        <div class="col-md-6">
+          <strong>Status: <%= @prospect.hcs_status %></strong><br>
+          <strong>Next Action: </strong>
+    		  <% if !@prospect.hcs_next_action_date.nil? %>
+      		  <%= @prospect.hcs_next_action_date.strftime("%m/%d/%Y") %>
+      		<% end %>
+      		<%= @prospect.hcs_next_action %>
+        </div>
+        <div class="col-md-2">
+          <%= link_to "Edit HCS Service", hcs_path(@prospect), class: "btn btn-warning" %>      
+        </div>
+      </div>
+  
+      <br>  
+  
+      <div class="row">
+        <div class="col-md-4">    		
+      		Current Provider: <em><%= @prospect.hcs_current_carrier %></em>
+      	</div>
+      	<div class="col-md-4">
+      		Current Type: <em><%= @prospect.hcs_current_coverage_type %></em>
+      	</div>
+      	<div class="col-md-4">
+          Current Cost: <em><%= number_to_currency(@prospect.hcs_current_health_benefit_cost, precision: 0) %></em>
+        </div>
+      </div>  
+  
+      <br>
+      
+      <div class="row">
+        <div class="col-md-6">
+          Intro Pres Date: <% if !@prospect.hcs_intro_presentation_date.nil? %>
+    		  <em><%= @prospect.hcs_intro_presentation_date.strftime("%m/%d/%Y") %></em><% end %>
+    		  <br>
+    		  Intro Presented by: <em><%= @prospect.hcs_intro_presenter %></em>  
+        </div>
+        <div class="col-md-6">
+          SME Presentation Date: <% if !@prospect.hcs_sme_presentation_date.nil? %>
+    		  <em><%= @prospect.hcs_sme_presentation_date.strftime("%m/%d/%Y") %></em><% end %><br>
+    		  Subject Matter Expert: <em><%= @prospect.hcs_sme %></em>
+        </div>
+      </div>
+  
+      <br>
+  
+      <div class="row">
+        <div class="col-md-4">
+          Proposal Meeting: <% if !@prospect.hcs_proposal_meeting_date.nil? %>
+    		  <em><%= @prospect.hcs_proposal_meeting_date.strftime("%m/%d/%Y") %></em><% end %>  
+        </div>      
+        <div class="col-md-4">
+          Agreement Date: <% if !@prospect.hcs_agreement_date.nil? %>
+    			<em><%= @prospect.hcs_agreement_date.strftime("%m/%d/%Y") %></em><% end %>
+        </div>
+        <div class="col-md-4">
+          New Cost: <em><%= number_to_currency(@prospect.hcs_new_cost, precision: 0) %></em>
+        </div>        
+
+      </div>
+  
+      <br>
+
+      
+      <div class="row">
+        <div class="col-md-12">
+          <strong>HealthCare Savings Comments</strong>
+      		<!--<p><#%= render @prospect.comments %></p>-->
+          <%= render @prospect.comments.where.not(hcs_content: nil) %>
+          <br>
+          <%= render 'comments/hcs_form' %>
+        </div>
+      </div>
+      
+    <% end %>

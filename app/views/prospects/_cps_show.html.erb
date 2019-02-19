@@ -1,0 +1,69 @@
+    <% if @prospect.cps_prospect == false %>
+      <%= link_to "Add Commercial Payments Service", cps_path(@prospect), class: "btn btn-info" %>
+    <% else %>
+      <hr>
+      <div class="row">
+        <div class="col-md-4">
+          <h4><strong>Commercial Payment Solutions</strong></h4>
+        </div>
+        <div class="col-md-6">
+          <strong>Status: <%= @prospect.cps_status %></strong><br>
+          <strong>Next Action: </strong>
+    		  <% if !@prospect.cps_next_action_date.nil? %>
+      		  <%= @prospect.cps_next_action_date.strftime("%m/%d/%Y") %>
+      		<% end %>
+      		<%= @prospect.cps_next_action %>
+        </div>
+        <div class="col-md-2">
+          <%= link_to "Edit CPS Service", cps_path(@prospect), class: "btn btn-warning" %>      
+        </div>
+      </div>
+  
+      <br>
+      
+      <div class="row">
+        <div class="col-md-4">
+          Intro Pres Date: <% if !@prospect.cps_intro_presentation_date.nil? %>
+    		  <em><%= @prospect.cps_intro_presentation_date.strftime("%m/%d/%Y") %></em><% end %>
+    		  <br>
+    		  Intro Presented by: <em><%= @prospect.cps_intro_presenter %></em>  
+        </div>
+        <div class="col-md-4">
+          SME Presentation Date: <% if !@prospect.cps_sme_presentation_date.nil? %>
+    		  <em><%= @prospect.cps_sme_presentation_date.strftime("%m/%d/%Y") %></em><% end %><br>
+    		  Subject Matter Expert: <em><%= @prospect.cps_sme %></em>
+        </div>
+        <div class="col-md-4">
+      		Total AP: <em><%= number_to_currency(@prospect.cps_total_ap, precision: 0) %></em>
+      	</div>
+      </div>
+  
+      <br>
+  
+      <div class="row">
+        <div class="col-md-4">
+          Proposal Meeting: <% if !@prospect.cps_supplier_match_meeting_date.nil? %>
+    		  <em><%= @prospect.cps_supplier_match_meeting_date.strftime("%m/%d/%Y") %></em><% end %>  
+        </div>      
+        <div class="col-md-4">
+          Agreement Date: <% if !@prospect.cps_agreement_date.nil? %>
+    			<em><%= @prospect.cps_agreement_date.strftime("%m/%d/%Y") %></em><% end %>
+        </div>
+        <div class="col-md-4">
+      		AP Converted to VC: <em><%= number_to_currency(@prospect.cps_converted_ap, precision: 0) %></em>
+      	</div>
+      </div>
+  
+      <br>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <strong>Comments</strong>
+      		<!--<p><#%= render @prospect.comments %></p>-->
+          <%= render @prospect.comments.where.not(cps_content: nil) %>
+          <br>
+          <%= render 'comments/cps_form' %>
+        </div>
+      </div>
+      
+    <% end %>

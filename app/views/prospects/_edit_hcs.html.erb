@@ -1,0 +1,73 @@
+  		<div class="row">
+        <div class="col-md-4">
+      		<%= f.input :hcs_status, required: true, include_blank: false, include_hidden: false,
+			            collection: [
+            									'Intro Presentation Scheduled',
+            									'SME Presentation Scheduled',
+            									'Proposal Meeting Scheduled',
+            									'Waiting for Claims Data',
+            									'Waiting on Agreement',
+            									'Closed - Enrollment Scheduled',
+            									'Closed - Group is Effective',
+            									'Intro Pres Given - No Sale',
+            									'SME Presentation Done - No Sale',
+            									'Proposal Given - No Sale',
+            									'Not Qualified - No Sale',
+            									'Other - No Sale',
+            									'Follow up in January',
+                              'Follow up in February',
+                              'Follow up in March',
+                              'Follow up in April',
+                              'Follow up in May',
+                              'Follow up in June',
+                              'Follow up in July',
+                              'Follow up in August',
+                              'Follow up in September',
+                              'Follow up in October',
+                              'Follow up in November',
+                              'Follow up in December'
+	  								          ], label: "Prospect Status" %>
+          </div>
+    		  <div class="col-md-4">
+    		    <%= f.input :hcs_next_action, label: "Next Action" %>  		    
+    		  </div>
+    		  <div class="col-md-4">
+      			<%= f.input :hcs_next_action_date, :include_blank => true, :default => nil,
+      			    as: :date, html5: true, order: [:month, :day, :year], label: "Next Action Date" %>
+    		  </div>
+        </div>  		  
+  		  <br>
+        <div class="row">
+   				<div class="col-md-4"><%= f.input :hcs_current_carrier, label: "Current Carrier" %></div>
+  				<div class="col-md-4"><%= f.input :hcs_current_coverage_type, label: "Current Coverage Type" %></div>
+  				<div class="col-md-4"><%= f.input :hcs_current_health_benefit_cost, label: "Current Cost" %></div>
+        </div>
+        <br>
+    		<div class="row">
+    		  <div class="col-md-4">
+      			<%= f.input :hcs_intro_presentation_date, :include_blank => true, :default => nil,
+      			    required: true, as: :date, html5: true, order: [:month, :day, :year], label: "Intro Presentation Date" %>
+  
+            <%= f.input :hcs_intro_presenter, label: "Intro Presenter (who presented?)" %>  		  
+    		  </div>
+    		  <div class="col-md-4">
+  	         <%= f.input :hcs_sme_presentation_date, :include_blank => true, :default => nil,
+      			    as: :date, html5: true, order: [:month, :day, :year], label: "SME Presentation Date" %>
+
+    		    <%= f.input :hcs_sme, label: "HealthCare Subject Matter Expert's Name" %>  		  
+    		  </div>
+    		</div>
+        <br>
+    		<div class="row">
+    		  <div class="col-md-4">
+            <%= f.input :hcs_proposal_meeting_date, :include_blank => true, :default => nil,
+      	    as: :date, html5: true, order: [:month, :day, :year], label: "SME Proposal Meeting Date" %>
+          </div>
+    		  <div class="col-md-4">
+            <%= f.input :hcs_agreement_date, :include_blank => true, :default => nil,
+      	      as: :date, html5: true, order: [:month, :day, :year], label: "Agreement Date (Sold)" %>
+          </div>
+    		  <div class="col-md-4">
+            <%= f.input :hcs_new_cost, label: "New Health Benefit Cost" %>
+    		  </div>
+    		</div>
