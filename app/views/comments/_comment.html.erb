@@ -1,8 +1,9 @@
 <div class="comment">
   <div class="row">
     <div class="col-md-9">
-    	<%= comment.hcs_content %><br>
-    			<p class="comment-posted-by">Posted by <%= comment.user.advisor_first_name + ' ' + comment.user.advisor_last_name %> <%= time_ago_in_words(comment.created_at) %> ago</p>
+    	<em><%= comment.cps_content %><%= comment.pay_content %><%= comment.hcs_content %></em>
+    	<p class="comment-posted-by">Posted by <%= comment.user.advisor_first_name + ' ' + comment.user.advisor_last_name %> on
+    	<%= comment.created_at.strftime("%m/%d/%y") %></p>
 		</div>
 
     <div class="col-md-3">

@@ -3,6 +3,15 @@ class PagesController < ApplicationController
   def home
   end
 
+  def commercial_payments
+  end
+  
+  def instant_pay
+  end
+
+  def healthcare_savings
+  end
+
   def docs
   end
 

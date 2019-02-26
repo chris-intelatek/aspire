@@ -1,30 +1,250 @@
+
 <% if current_user.manager %>
 
 	<div class="col-md-12">
-
-		<div class="col-md-4">
-			<div class="well dashboard-panel dashboard-bckg-1 ">
-				<h1 align="center"><%= hcs_all_in_crm %></h1>
-				<p>&nbsp;</p>
-				<h4 align="center">Total Prospects in CRM</h4>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="well dashboard-panel dashboard-bckg-1 ">
+					<h1 align="center"><%= @prospects.count %></h1>
+					<p>&nbsp;</p>
+					<h4 align="center">Total Prospects in CRM</h4>
+				</div>
+			</div>
+	
+			<div class="col-md-6">
+				<div class="well dashboard-panel dashboard-bckg-2 ">
+					<h1 align="center"><%= @users.count %></h1>
+					<p>&nbsp;</p>
+					<h4 align="center">Total Users in CRM</h4>
+				</div>
 			</div>
 		</div>
 
-		<div class="col-md-4">
-			<div class="well dashboard-panel dashboard-bckg-2 ">
-				<h1 align="center"><%= @users.count %></h1>
-				<p>&nbsp;</p>
-				<h4 align="center">Total Users in CRM</h4>
+
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well dashboard-panel dashboard-bckg-1 ">
+					<h1 align="center">Commercial Payment Solutions</h1>
+				</div>
 			</div>
 		</div>
 
-		<div class="col-md-4">
-			<div class="well dashboard-panel dashboard-bckg-3 ">
-				<h1 align="center"><%= (hcs_all_in_crm - hcs_no_sale) %></h1>
-				<p>&nbsp;</p>
-				<h4 align="center">Total Current Opportunities</h4>
+		<div class="row">
+			
+			<div class="col-md-4">
+				<div class="row">
+					<div class="col-md-12">				
+						<div class="well dashboard-panel dashboard-bckg-6">
+							<h1 align="center"><%= @prospects.where(cps_prospect: true).count - cps_all_closed %></h1>
+							<h4 align="center">Total Open Commercial Payment Opportunities</h4>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">				
+						<div class="well dashboard-panel dashboard-bckg-6">
+							<h1 align="center"><%= @prospects.where(cps_prospect: true).count %></h1>
+							<h4 align="center">Total Commercial Payment Prospects in CRM</h4>
+						</div>				
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="well dashboard-panel dashboard-bckg-6">
+					<h3 align="center">Prospects Status:</h4>
+					<h4>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Intro Presentation Scheduled").count %>&nbsp; Intro Presentations Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "SME Presentation Scheduled").count %>&nbsp;  SME Presentations Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Waiting for Supplier Data").count %>&nbsp;  Waiting for Supplier Data<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Supplier Match Presentation Scheduled").count %>&nbsp;  Supplier Match Pres Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Waiting on Agreement").count %>&nbsp;  Waiting on Agreements<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Closed - Enrollment Scheduled").count %>&nbsp;  Closed - Enrollment Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Closed - Client is Active").count %>&nbsp;  Closed - Client is Active<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Intro Presentation Given - No Sale").count %>&nbsp;  Intro Presentations Given - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "SME Presentation Done - No Sale").count %>&nbsp;  SME Presentations Done - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Supplier Match Presentation Given - No Sale").count %>&nbsp;  Supplier Match Pres Given - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Not Qualified - No Sale").count %>&nbsp;  Not Qualified - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Other - No Sale").count %>&nbsp;  Other - No Sale</h4>
+				</div>
+			</div>
+	
+			<div class="col-md-4">
+				<div class="well dashboard-panel dashboard-bckg-6">
+					<h3 align="center">Following Up In:</h4>
+					<h4>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in January").count %>&nbsp; January<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in February").count %>&nbsp;  February<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in March").count %>&nbsp;  March<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in April").count %>&nbsp;  April<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in May").count %>&nbsp;  May<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in June").count %>&nbsp;  June<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in July").count %>&nbsp;  July<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in August").count %>&nbsp;  August<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in September").count %>&nbsp;  September<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in October").count %>&nbsp;  October<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in November").count %>&nbsp;  November<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(cps_status: "Follow up in December").count %>&nbsp;  December</h4>
+				</div>
+			</div>
+
+		</div>
+
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well dashboard-panel dashboard-bckg-1 ">
+					<h1 align="center">Instant Pay</h1>
+				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			
+			<div class="col-md-4">
+				<div class="row">
+					<div class="col-md-12">				
+						<div class="well dashboard-panel dashboard-bckg-6">
+							<h1 align="center"><%= @prospects.where(pay_prospect: true).count - pay_all_closed %></h1>
+							<h4 align="center">Total Open Instant Pay Opportunities</h4>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">				
+						<div class="well dashboard-panel dashboard-bckg-6">
+							<h1 align="center"><%= @prospects.where(pay_prospect: true).count %></h1>
+							<h4 align="center">Instant Pay Prospects in CRM</h4>
+						</div>				
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="well dashboard-panel dashboard-bckg-6">
+					<h3 align="center">Instant Pay Prospects Status:</h4>
+					<h4>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(pay_status: "Intro Presentation Scheduled").count %>&nbsp; Intro Presentations Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(pay_status: "SME Presentation Scheduled").count %>&nbsp;  SME Presentations Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(pay_status: "Waiting on Agreement").count %>&nbsp;  Waiting on Agreements<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(pay_status: "Closed - Client is Active").count %>&nbsp;  Closed - Client is Active<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(pay_status: "Intro Presentation Given - No Sale").count %>&nbsp;  Intro Presentations Given - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(pay_status: "SME Presentation Done - No Sale").count %>&nbsp;  SME Presentations Done - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(pay_status: "Not Qualified - No Sale").count %>&nbsp;  Not Qualified - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(pay_status: "Other - No Sale").count %>&nbsp;  Other - No Sale</h4>
+				</div>
+			</div>
+	
+	
+			<div class="col-md-4">
+				<div class="well dashboard-panel dashboard-bckg-6">
+					<h3 align="center">Following Up In:</h4>
+					<h4>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in January").count %>&nbsp; January<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in February").count %>&nbsp;  February<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in March").count %>&nbsp;  March<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in April").count %>&nbsp;  April<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in May").count %>&nbsp;  May<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in June").count %>&nbsp;  June<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in July").count %>&nbsp;  July<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in August").count %>&nbsp;  August<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in September").count %>&nbsp;  September<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in October").count %>&nbsp;  October<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in November").count %>&nbsp;  November<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(pay_status: "Follow up in December").count %>&nbsp;  December</h4>
+				</div>
+			</div>
+
+		</div>
+
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well dashboard-panel dashboard-bckg-1 ">
+					<h1 align="center">HealthCare Savings</h1>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			
+			<div class="col-md-4">
+				<div class="row">
+					<div class="col-md-12">				
+						<div class="well dashboard-panel dashboard-bckg-6">
+							<h1 align="center"><%= @prospects.where(hcs_prospect: true).count - hcs_all_closed %></h1>
+							<h4 align="center">Total Open HealthCare Opportunities</h4>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">				
+						<div class="well dashboard-panel dashboard-bckg-6">
+							<h1 align="center"><%= @prospects.where(hcs_prospect: true).count %></h1>
+							<h4 align="center">Total HealthCare Prospects in CRM</h4>
+						</div>				
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="well dashboard-panel dashboard-bckg-6">
+					<h3 align="center">HealthCare Prospects Status:</h4>
+					<h4>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Intro Presentation Scheduled").count %>&nbsp; Intro Presentations Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "SME Presentation Scheduled").count %>&nbsp;  SME Presentations Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Waiting for Claims Data").count %>&nbsp;  Waiting for Claims Data<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Proposal Meeting Scheduled").count %>&nbsp;  Proposal Meetings Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Waiting on Agreement").count %>&nbsp;  Waiting on Agreements<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Closed - Enrollment Scheduled").count %>&nbsp;  Closed - Enrollment Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Closed - Group is Effective").count %>&nbsp;  Closed - Groups Are Effective<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Intro Presentation Given - No Sale").count %>&nbsp;  Intro Presentations Given - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "SME Presentation Done - No Sale").count %>&nbsp;  SME Presentations Done - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Proposal Given - No Sale").count %>&nbsp;  Proposals Given - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Not Qualified - No Sale").count %>&nbsp;  Not Qualified - No Sale<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(hcs_status: "Other - No Sale").count %>&nbsp;  Other - No Sale</h4>
+				</div>
+			</div>
+	
+	
+			<div class="col-md-4">
+				<div class="well dashboard-panel dashboard-bckg-6">
+					<h3 align="center">Following Up In:</h4>
+		
+					<h4>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in January").count %>&nbsp; January<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in February").count %>&nbsp;  February<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in March").count %>&nbsp;  March<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in April").count %>&nbsp;  April<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in May").count %>&nbsp;  May<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in June").count %>&nbsp;  June<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in July").count %>&nbsp;  July<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in August").count %>&nbsp;  August<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in September").count %>&nbsp;  September<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in October").count %>&nbsp;  October<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in November").count %>&nbsp;  November<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<%= @prospects.where(hcs_status: "Follow up in December").count %>&nbsp;  December</h4>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+
+
 
 		<div class="col-md-3">
 			<div class="well dashboard-panel dashboard-bckg-4 ">
@@ -82,13 +302,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-3">
-			<div class="well dashboard-panel dashboard-bckg-11 ">
-				<h1 align="center"><%= hcs_no_sale %></h1>
-				<p>&nbsp;</p>
-				<h4 align="center">No Sale</h4>
-			</div>
-		</div>
+
 
 		<div class="col-md-3">
 			<div class="well dashboard-panel dashboard-bckg-6">

@@ -1,5 +1,5 @@
 class ProspectsController < ApplicationController
-  before_action :find_prospect, only: [:show, :edit, :update, :destroy, :hcsq, :hcsq_update, :hcs, :hcs_update, :cps, :cps_update]
+  before_action :find_prospect, only: [:show, :edit, :update, :destroy, :hcsq, :hcsq_update, :hcs, :hcs_update, :cps, :cps_update, :pay, :pay_update]
   skip_before_action :authenticate_user!, only: [:new_lead, :new_lead_create]
   
   def index
@@ -67,18 +67,6 @@ class ProspectsController < ApplicationController
   def edit
   end
 
-  def hcs
-  end
-  
-  def hcs_update
-    if @prospect.update(prospect_params)
-      flash[:success] = "Prospect has been updated."
-      redirect_to prospect_path
-    else
-      render 'hcs'
-    end
-  end
-
   def cps
   end
   
@@ -88,6 +76,32 @@ class ProspectsController < ApplicationController
       redirect_to prospect_path
     else
       render 'cps'
+    end
+  end
+
+  def pay
+  end
+  
+  def pay_update
+    if @prospect.update(prospect_params)
+      flash[:success] = "Prospect has been updated."
+      redirect_to prospect_path
+    else
+      render 'pay'
+    end
+  end
+
+
+
+  def hcs
+  end
+  
+  def hcs_update
+    if @prospect.update(prospect_params)
+      flash[:success] = "Prospect has been updated."
+      redirect_to prospect_path
+    else
+      render 'hcs'
     end
   end
 
@@ -121,7 +135,7 @@ class ProspectsController < ApplicationController
 
   private
     def prospect_params
-      params.require(:prospect).permit(:user_id, :organization, :street_address, :address2, :city, :state, :zip, :phone, :website, :employees, :prospect_note, :created_at, :updated_at, :hcs_intro_presentation_date, :hcs_sme_presentation_date, :hcs_current_health_benefit_cost, :hcs_status, :hcs_agreement_date, :user_id, :hcs_proposal_meeting_date, :contact1_first_name, :contact1_last_name, :contact1_title, :contact1_phone, :contact1_mobile, :contact1_email, :contact2_first_name, :contact2_last_name, :contact2_title, :contact2_phone, :contact2_mobile, :contact2_email, :primary_contact, :hcs_intro_presenter, :hcs_sme, :hcs_current_carrier, :hcs_current_coverage_type, :hcs_intelatek_bda, :hcs_intelatek_notes, :hcs_intelatek_day, :hcs_intelatek_timezone, :hcs_intelatek_time, :hcs_next_action, :hcs_next_action_date, :hcs_prospect, :cps_intro_presentation_date, :cps_sme_presentation_date, :cps_total_ap, :cps_status, :cps_agreement_date, :cps_supplier_match_meeting_date, :cps_intro_presenter, :cps_sme, :cps_intelatek_bda, :cps_intelatek_notes, :cps_intelatek_day, :cps_intelatek_timezone, :cps_intelatek_time, :hcs_new_cost, :cps_next_action_date, :cps_next_action, :cps_prospect, :cps_converted_ap)
+      params.require(:prospect).permit(:user_id, :organization, :street_address, :address2, :city, :state, :zip, :phone, :website, :employees, :prospect_note, :created_at, :updated_at, :hcs_intro_presentation_date, :hcs_sme_presentation_date, :hcs_current_health_benefit_cost, :hcs_status, :hcs_agreement_date, :user_id, :hcs_proposal_meeting_date, :contact1_first_name, :contact1_last_name, :contact1_title, :contact1_phone, :contact1_mobile, :contact1_email, :contact2_first_name, :contact2_last_name, :contact2_title, :contact2_phone, :contact2_mobile, :contact2_email, :primary_contact, :hcs_intro_presenter, :hcs_sme, :hcs_current_carrier, :hcs_current_coverage_type, :intelatek_bda, :intelatek_notes, :intelatek_day, :intelatek_timezone, :intelatek_time, :hcs_next_action, :hcs_next_action_date, :hcs_prospect, :cps_intro_presentation_date, :cps_sme_presentation_date, :cps_total_ap, :cps_status, :cps_agreement_date, :cps_supplier_match_meeting_date, :cps_intro_presenter, :cps_sme, :hcs_new_cost, :cps_next_action_date, :cps_next_action, :cps_prospect, :cps_converted_ap, :pay_prospect, :pay_hourly_employees, :pay_status, :pay_next_action_date, :pay_next_action, :pay_intro_presentation_date, :pay_intro_presenter, :pay_sme_presentation_date, :pay_sme, :pay_agreement_date, :pay_next_action_date, :pay_next_action_date)
     end
 
     def find_prospect

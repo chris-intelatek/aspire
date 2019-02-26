@@ -9,17 +9,8 @@
             <span class="icon-bar"></span>
           </button>
           
-          <% if user_signed_in? %>
-            <% if current_user.group == "aspire_hcs" %>
-              <%= link_to image_tag("AspireHCS-logo.png", alt: "logo"), '/', class: 'navbar-brand' %>
-              <% elsif current_user.group == "aspire_cps" %>
-                <%= link_to image_tag("AspireCPS-logo.png", alt: "logo"), '/', class: 'navbar-brand' %>
-              <% else %>
-                <%= link_to image_tag("AspireCPS-logo.png", alt: "logo"), '/', class: 'navbar-brand' %>
-            <% end %>
-            <% else %>
-              <%= link_to image_tag("AspireCPS-logo.png", alt: "logo"), '/', class: 'navbar-brand' %>            
-          <% end %>
+          <%= link_to image_tag("Aspire_logo.png", alt: "logo"), '/', class: 'navbar-brand' %>
+
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -33,6 +24,20 @@
               <% end %>      
 
               <li><%= link_to home_path do %><i class="fa fa-home"></i> Home<% end %></li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle navbar-select" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="glyphicon glyphicon-education"></i> Training & Docs
+                </a>
+                <div class="dropdown-menu navbar-select" aria-labelledby="navbarDropdown">
+                  <p><%= link_to "Home", home_path %></p>
+                  <p><%= link_to "Commercial Payment Solutions", commercial_payments_path %></p>
+                  <p><%= link_to "Instant Pay", instant_pay_path %></p>
+                  <p><%= link_to "Home", healthcare_savings_path %></p>
+                </div>
+              </li>
+      
               
               <% if current_user.manager %>
     					  <li><%= link_to dashboard_path do %><i class="glyphicon glyphicon-th"></i> Dashboard<% end %></li>

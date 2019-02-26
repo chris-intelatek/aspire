@@ -5,30 +5,33 @@
       <div class="row">
         <div class="col-md-12"><h2><%= @prospect.organization %></h2></div>
       </div>
+      <div class="row">
+        <div class="col-md-12"><p class="prospect-posted-by"><em>Prospect created on
+          <%= @prospect.created_at.strftime("%m/%d/%Y") %> and last updated on
+          <% if !@prospect.comments.last.nil? %>
+            <% if @prospect.comments.last.updated_at > @prospect.updated_at %>
+          	  <%= @prospect.comments.last.updated_at.strftime("%m/%d/%Y") %></em></p>
+            <% else %>
+          	  <%= @prospect.updated_at.strftime("%m/%d/%Y") %></em></p>
+            <% end %>
+          <% else %>
+          	<%= @prospect.updated_at.strftime("%m/%d/%Y") %></em></p>
+      		<% end %>      
+    		</div>    
+      </div>
     </div>
 
 
   <div class="prospect-show">
-    <div class="row">
-      <div class="col-md-12"><p class="prospect-posted-by">Prospect created 
-        <%= time_ago_in_words(@prospect.created_at) %> ago, last updated 
-        <%= time_ago_in_words(@prospect.updated_at) %> ago 
-        <% if !@prospect.comments.last.nil? %>
-        	, and last commented <%= time_ago_in_words(@prospect.comments.last.updated_at) %> ago.</p>
-    		<% end %>
-  		</div>    
-    </div>
-  
-    <br>
+
   	
     <div class="row">
       <div class="col-md-6">
-        Address: <em><%= @prospect.street_address %></em><br>
+        &nbsp; Address: <em><%= @prospect.street_address %></em><br>
         Address2: <em><%= @prospect.address2 %></em><br>
-      	Address3: <em><%= @prospect.city %>, <%= @prospect.state %> <%= @prospect.zip %></em>
+      	CityStZip: <em><%= @prospect.city %>, <%= @prospect.state %> <%= @prospect.zip %></em>
       </div>
       <div class="col-md-6">
-        <br>    
       	Phone: <em><%= @prospect.phone %></em><br>
       	Website: <em><%= link_to @prospect.website, "http://" + @prospect.website, target: "_blank" %></em><br>
       	Employees: <em><%= @prospect.employees %></em>
@@ -39,7 +42,7 @@
     <div class="row">
       <div class="col-md-6">
         <strong>Contact 1</strong><br>
-        Name: <em><%= @prospect.contact1_first_name %> <%= @prospect.contact1_last_name %><br>
+        Name: <em><%= @prospect.contact1_first_name %> <%= @prospect.contact1_last_name %></em><br>
         Title: <em><%= @prospect.contact1_title %></em><br>
         Phone: <em><%= @prospect.contact1_phone %></em><br>
         Mobile: <em><%= @prospect.contact1_mobile %></em><br>
@@ -50,11 +53,11 @@
       </div>
       <div class="col-md-6">
         <strong>Contact 2</strong><br>
-        Name: <em><%= @prospect.contact2_first_name %> <%= @prospect.contact2_last_name %><br>
+        Name: <em><%= @prospect.contact2_first_name %> <%= @prospect.contact2_last_name %></em><br>
         Title: <em><%= @prospect.contact2_title %></em><br>
         Phone: <em><%= @prospect.contact2_phone %></em><br>
         Mobile: <em><%= @prospect.contact2_mobile %></em><br>
-        Email: <%if !@prospect.contact2_email.nil? %></em>
+        Email: <%if !@prospect.contact2_email.nil? %>
                   <em><%= link_to @prospect.contact2_email, "mailto:" + @prospect.contact2_email %></em>
                 <% end %>
                 <br>
@@ -68,6 +71,8 @@
 
 	      <%= render 'prospects/cps_show' %>
 
+	      <%= render 'prospects/pay_show' %>
+	      
 	      <%= render 'prospects/hcs_show' %>
 
 	</div>

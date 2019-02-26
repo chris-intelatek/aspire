@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190219041217) do
+ActiveRecord::Schema.define(version: 20190224195606) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "hcs_content"
@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(version: 20190219041217) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.text     "ap_content"
+    t.text     "cps_content"
+    t.text     "pay_content"
   end
 
   add_index "comments", ["prospect_id"], name: "index_comments_on_prospect_id"
@@ -62,11 +63,11 @@ ActiveRecord::Schema.define(version: 20190219041217) do
     t.string   "hcs_sme"
     t.string   "hcs_current_carrier"
     t.string   "hcs_current_coverage_type"
-    t.string   "hcs_intelatek_bda"
-    t.text     "hcs_intelatek_notes"
-    t.string   "hcs_intelatek_day"
-    t.string   "hcs_intelatek_timezone"
-    t.string   "hcs_intelatek_time"
+    t.string   "intelatek_bda"
+    t.text     "intelatek_notes"
+    t.string   "intelatek_day"
+    t.string   "intelatek_timezone"
+    t.string   "intelatek_time"
     t.string   "hcs_next_action"
     t.date     "hcs_next_action_date"
     t.date     "cps_intro_presentation_date"
@@ -77,17 +78,23 @@ ActiveRecord::Schema.define(version: 20190219041217) do
     t.date     "cps_supplier_match_meeting_date"
     t.string   "cps_intro_presenter"
     t.string   "cps_sme"
-    t.string   "cps_intelatek_bda"
-    t.text     "cps_intelatek_notes"
-    t.string   "cps_intelatek_day"
-    t.string   "cps_intelatek_timezone"
-    t.string   "cps_intelatek_time"
     t.decimal  "hcs_new_cost",                    default: 0.0,   null: false
     t.date     "cps_next_action_date"
     t.string   "cps_next_action"
     t.boolean  "hcs_prospect",                    default: false
     t.boolean  "cps_prospect",                    default: false
     t.decimal  "cps_converted_ap",                default: 0.0,   null: false
+    t.string   "hcs_renewal_month"
+    t.boolean  "pay_prospect",                    default: false
+    t.integer  "pay_hourly_employees"
+    t.date     "pay_intro_presentation_date"
+    t.string   "pay_intro_presenter"
+    t.date     "pay_sme_presentation_date"
+    t.string   "pay_sme"
+    t.string   "pay_status"
+    t.date     "pay_agreement_date"
+    t.date     "pay_next_action_date"
+    t.string   "pay_next_action"
   end
 
   create_table "users", force: :cascade do |t|
