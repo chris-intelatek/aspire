@@ -29,15 +29,18 @@
       <br>  
   
       <div class="row">
-        <div class="col-md-4">    		
+        <div class="col-md-3">    		
       		Current Provider: <em><%= @prospect.hcs_current_carrier %></em>
       	</div>
-      	<div class="col-md-4">
+      	<div class="col-md-3">
       		Current Type: <em><%= @prospect.hcs_current_coverage_type %></em>
       	</div>
-      	<div class="col-md-4">
+      	<div class="col-md-3">
           Current Cost: <em><%= number_to_currency(@prospect.hcs_current_health_benefit_cost, precision: 0) %></em>
         </div>
+      	<div class="col-md-3">
+      		Renewal Month: <em><%= @prospect.hcs_renewal_month %></em>
+      	</div>
       </div>  
   
       <br>

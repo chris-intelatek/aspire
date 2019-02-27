@@ -9,7 +9,7 @@
             									'Waiting on Agreement',
             									'Closed - Enrollment Scheduled',
             									'Closed - Group is Effective',
-            									'Intro Pres Given - No Sale',
+            									'Intro Presentation Given - No Sale',
             									'SME Presentation Done - No Sale',
             									'Proposal Given - No Sale',
             									'Not Qualified - No Sale',
@@ -38,9 +38,23 @@
     		  </div>  		  
   		  <br>
         <div class="row">
-   				<div class="col-md-4"><%= f.input :hcs_current_carrier, label: "Current Carrier" %></div>
-  				<div class="col-md-4"><%= f.input :hcs_current_coverage_type, label: "Current Coverage Type" %></div>
-  				<div class="col-md-4"><%= f.input :hcs_current_health_benefit_cost, label: "Current Cost" %></div>
+   				<div class="col-md-3"><%= f.input :hcs_current_carrier, label: "Current Carrier" %></div>
+  				<div class="col-md-3"><%= f.input :hcs_current_coverage_type, label: "Current Coverage Type" %></div>
+  				<div class="col-md-3"><%= f.input :hcs_current_health_benefit_cost, label: "Current Cost" %></div>
+  				<div class="col-md-3"><%= f.input :hcs_renewal_month, collection: [
+  			  																			'January',
+                                                'February',
+                                                'March',
+                                                'April',
+                                                'May',
+                                                'June',
+                                                'July',
+                                                'August',
+                                                'September',
+                                                'October',
+                                                'November',
+                                                'December'
+																				], label: "Renewal Month" %></div>
         </div>
         <br>
     		<div class="row">
