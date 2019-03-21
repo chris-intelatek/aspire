@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190224195606) do
+ActiveRecord::Schema.define(version: 20190315041852) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "hcs_content"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20190224195606) do
     t.decimal  "cps_converted_ap",                default: 0.0,   null: false
     t.string   "hcs_renewal_month"
     t.boolean  "pay_prospect",                    default: false
-    t.integer  "pay_hourly_employees"
+    t.integer  "pay_hourly_employees",            default: 0
     t.date     "pay_intro_presentation_date"
     t.string   "pay_intro_presenter"
     t.date     "pay_sme_presentation_date"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20190224195606) do
     t.date     "pay_agreement_date"
     t.date     "pay_next_action_date"
     t.string   "pay_next_action"
+    t.string   "renewal_month"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,6 +121,11 @@ ActiveRecord::Schema.define(version: 20190224195606) do
     t.string   "group"
     t.string   "gravatar"
     t.boolean  "bc_swat",                default: false
+    t.string   "mailing_address"
+    t.string   "apt_suite"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
