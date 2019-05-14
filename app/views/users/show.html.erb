@@ -17,9 +17,9 @@
             <td>Email: </td><td><%= @user.email %></td>
           </tr>
           <tr>
-            <td>Address: &nbsp;&nbsp;<br>&nbsp;</td><td><br>
+            <td>Address: &nbsp;&nbsp;<br>&nbsp;</td><td><%= @user.mailing_address %><br>
                             <%= @user.apt_suite %>
-                            <%= @user.city %>, <%= @user.state %>  <%= @user.zip %>
+                            <%#= @user.city %>, <%= @user.state %>  <%= @user.zip %>
                         <br>
             </td>
           </tr>
