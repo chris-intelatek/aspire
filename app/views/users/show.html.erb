@@ -6,7 +6,21 @@
         <h4><%= @user.advisor_first_name + ' ' + @user.advisor_last_name %></h4>
       </div>
       <div class="prospect-show">
-
+        <table valign="middle">
+          <tr>
+            <td>Phone: </td><td><%= @user.advisor_phone %></td>
+          </tr>
+          <tr>
+            <td>Mobile: </td><td><%= @user.advisor_mobile %></td>    
+          </tr>
+          <tr>
+            <td>Email: </td><td><%= @user.email %></td>
+          </tr>
+          <tr>
+ 
+            </td>
+          </tr>
+        </table>
       </div>
     	<div class="panel-footer">
     		<div class="links center">
