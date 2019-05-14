@@ -22,6 +22,33 @@ class ProspectsController < ApplicationController
     end
   end
   
+  
+  def index
+    @hcs_status = Prospect.select(:hcs_status).order(:hcs_status).distinct
+    @pay_status = Prospect.select(:pay_status).order(:pay_status).distinct
+    @cps_status = Prospect.select(:cps_status).order(:cps_status).distinct
+    if params[:hcs_status] != nil
+      @prospects = Prospect.where(hcs_status: params[:hcs_status])
+      elsif params[:pay_status] != nil
+        @prospects = Prospect.where(pay_status: params[:pay_status])
+      elsif params[:cps_status] != nil
+        @prospects = Prospect.where(cps_status: params[:cps_status])
+      elsif params[:search]
+        @prospects = Prospect.search(params[:search]).order("created_at DESC")
+      elsif
+        @prospects = Prospect.all.order('user_id DESC')
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @prospects.to_csv, filename: "Prospects-#{Date.today}.csv" }
+    end
+  end  
+  
+  
+  
+  
+  
   def show
   end
 
