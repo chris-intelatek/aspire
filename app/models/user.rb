@@ -5,7 +5,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
         :trackable, :validatable, :timeoutable
-
+  validates :advisor_first_name, :presence => true
+  validates :advisor_last_name, :presence => true
+  validates :advisor_phone, :presence => true
+  validates :advisor_mobile, :presence => true
+  validates :mailing_address, :presence => true
+  validates :city, :presence => true
+  validates :state, :presence => true
+  validates :zip, :presence => true
+  validates :agree, :presence => true
 
   def self.to_csv
     CSV.generate(headers: true) do |csv|

@@ -10,11 +10,11 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_params
-    params.require(:user).permit(:advisor_first_name, :advisor_last_name, :advisor_phone, :advisor_mobile, :admin, :manager, :email, :password, :password_confirmation, :group)
+    params.require(:user).permit(:advisor_first_name, :advisor_last_name, :advisor_phone, :advisor_mobile, :admin, :manager, :support, :email, :password, :password_confirmation, :group,  :mailing_address, :apt_suite, :city, :state, :zip, :agree)
   end
 
   def account_update_params
-    params.require(:user).permit(:advisor_first_name, :advisor_last_name, :advisor_phone, :advisor_mobile, :admin, :manager, :email, :password, :password_confirmation, :current_password, :group)
+    params.require(:user).permit(:advisor_first_name, :advisor_last_name, :advisor_phone, :advisor_mobile, :admin, :manager, :support, :email, :password, :password_confirmation, :group,  :mailing_address, :apt_suite, :city, :state, :zip, :agree)
   end
   
   def set_group_cookie
