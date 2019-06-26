@@ -32,7 +32,7 @@
         <% end %>
 
         <% if current_user.admin %>
-          Admin&#63; <%= f.check_box :admin? %> &nbsp; | &nbsp; Manager&#63; <%= f.check_box :manager? %> &nbsp; | &nbsp; Support&#63; <%= f.check_box :support? %>
+          Admin&#63; <%= f.check_box :admin? %> &nbsp; | &nbsp; Manager&#63; <%= f.check_box :manager? %> &nbsp; | &nbsp; Support&#63; <%= f.check_box :support? %> | &nbsp;  Agree&#63; <%= f.check_box :agree? %>
         <% end %>
         
       </div>
@@ -43,10 +43,10 @@
       </div>
       <% end %>
       <p>&nbsp;</p>
-      <em>Caution: Deleteing a user will delete all of their prospects and associated comments.</em>
+      <em>Caution: Deleting a user will delete all of their prospects and associated comments.</em>
   		<div class="links">
     		<%= link_to "Back", :back, class: "btn btn-beige" %> &nbsp;&nbsp;
-        <%= link_to "Delete User", user_path(@user), data: { confirm: "Caution: Deleteing a user will delete all of their prospects and associated comments." }, method: :delete, class:"btn btn-danger" %>
+        <%= link_to "Delete User", user_path(@user), data: { confirm: "Caution: Deleting a user will delete all of their prospects and associated comments." }, method: :delete, class:"btn btn-danger" %>
       </div>
     </div>
   </div>
