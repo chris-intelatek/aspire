@@ -8,28 +8,32 @@
       <div class="prospect-show">
         <table valign="middle">
           <tr>
-            <td>Phone: </td><td><%= @user.advisor_phone %></td>
+            <td>Phone: </td><td> &nbsp; </td><td><%= @user.advisor_phone %></td>
           </tr>
           <tr>
-            <td>Mobile: </td><td><%= @user.advisor_mobile %></td>    
+            <td>Mobile: </td><td> &nbsp; </td><td><%= @user.advisor_mobile %></td>    
           </tr>
           <tr>
-            <td>Email: </td><td><%= @user.email %></td>
+            <td>Email: </td><td> &nbsp; </td><td><%= @user.email %></td>
           </tr>
           <tr>
-            <td>Mailing Address: </td><td><%= @user.mailing_address %>
+            <td>Mailing Address: </td><td> &nbsp; </td><td><%= @user.mailing_address %>
           <tr>
-            <td>Apt/Suite: </td><td><%= @user.apt_suite %></td>
+            <td>Apt/Suite: </td><td> &nbsp; </td><td><%= @user.apt_suite %></td>
           </tr>
           <tr>
-            <td>City: </td><td><%= @user.city %></td>
+            <td>City: </td><td> &nbsp; </td><td><%= @user.city %></td>
           </tr>
           <tr>
-            <td>State: </td><td><%= @user.state %></td>
+            <td>State: </td><td> &nbsp; </td><td><%= @user.state %></td>
           </tr>
           <tr>
-            <td>Zip: </td><td><%= @user.zip %></td>
+            <td>Zip: </td><td> &nbsp; </td><td><%= @user.zip %></td>
           </tr>
+          <tr>
+			      <td>Agreement Date: </td><td> &nbsp; </td><td><%= @user.created_at.strftime("%m/%d/%Y") %></td>               
+          </tr>
+
         </table>
       </div>
     	<div class="panel-footer">

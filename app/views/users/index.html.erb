@@ -33,11 +33,12 @@
               <th class="th-left">Name</th>
               <th>Last Logged In</th>
               <th>Prospects</th>
-              <th>Group</th>
-              <th>Swat</th>
-              <th>Admin</th>
-              <th>Manager</th>
-              <th>Support</th> 
+              <% if current_user.manager || current_user.support %>
+                <th>Group</th>
+                <th>Admin</th>
+                <th>Manager</th>
+                <th>Support</th>
+              <% end %>
             </tr>
           </thead>
                   
@@ -46,11 +47,13 @@
               <tr>
               	<td class="td-left"><%= link_to user.advisor_name, user %></td>
               	<td style="vertical-align:middle"><%= time_ago_in_words(user.current_sign_in_at) if user.current_sign_in_at %> ago</td>
-              	<td style="vertical-align:middle"><%= user.prospects.size %></td>              	
-              	<td style="vertical-align:middle"><%= user.group %></td>
-              	<td style="vertical-align:middle"><% if user.admin == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
-              	<td style="vertical-align:middle"><% if user.manager == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
-              	<td style="vertical-align:middle"><% if user.support == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
+              	<td style="vertical-align:middle"><%= user.prospects.size %></td>
+              	<% if current_user.manager || current_user.support %>
+                	<td style="vertical-align:middle"><%= user.group %></td>
+                	<td style="vertical-align:middle"><% if user.admin == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
+                	<td style="vertical-align:middle"><% if user.manager == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
+                	<td style="vertical-align:middle"><% if user.support == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
+              	<% end %>
       		    </tr>
         		<% end %>
           </tbody>
