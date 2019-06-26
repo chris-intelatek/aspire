@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   include CookieManager
-  before_action :set_group_cookie, only: :new
+  before_action :set_group, only: :new
   before_action :ensure_group_is_set, only: :new
 
   private
@@ -17,15 +17,13 @@ class RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:advisor_first_name, :advisor_last_name, :advisor_phone, :advisor_mobile, :admin, :manager, :support, :email, :password, :password_confirmation, :group,  :mailing_address, :apt_suite, :city, :state, :zip, :agree)
   end
   
-  def set_group_cookie
-    set_cookie(:group_identifier, params[:group]) if params[:group]
-    @group_id = get_cookie(:group_identifier)
+  def set_group
+    @group_id = params[:group]
   end
   
   def ensure_group_is_set
-    if @group_id.blank? || User.find_by(user_code: @group_id).present?
-      redirect_to root_path and return 
-      flash[:danger] = 'Please contact your administrator.'
+    if @group_id.blank? || User.find_by(user_code: @group_id).blank?
+      redirect_to new_user_session_path, flash: { danger:  'Please contact your administrator.' } and return 
     end
   end
   
