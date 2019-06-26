@@ -48,7 +48,6 @@
               	<td style="vertical-align:middle"><%= time_ago_in_words(user.current_sign_in_at) if user.current_sign_in_at %> ago</td>
               	<td style="vertical-align:middle"><%= user.prospects.size %></td>              	
               	<td style="vertical-align:middle"><%= user.group %></td>
-              	<td style="vertical-align:middle"><% if user.bc_swat == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
               	<td style="vertical-align:middle"><% if user.admin == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
               	<td style="vertical-align:middle"><% if user.manager == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
               	<td style="vertical-align:middle"><% if user.support == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
@@ -61,6 +60,6 @@
       </div>
 
     </div>
-		<div class="panel-footer"><p align="center"><em>Only managers & support can see this page.</em></p></div>        
+		<div class="panel-footer"><p align="center"><em></em></p></div>        
 
   </div>
