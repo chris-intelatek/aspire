@@ -23,7 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def ensure_group_is_set
-    unless @group_id
+    if @group_id.blank? || User.find_by(user_code: @group_id).present?
       redirect_to root_path and return 
       flash[:danger] = 'Please contact your administrator.'
     end

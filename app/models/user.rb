@@ -14,6 +14,15 @@ class User < ActiveRecord::Base
   validates :state, :presence => true
   validates :zip, :presence => true
   validates :agree, :presence => true
+  validates :user_code, uniqueness: true, if: -> {user_code.present?}
+  
+  scope :my_users, (lambda do |user|
+    if user.manager || user.support
+      all
+    else
+      where(group: user.user_code)
+    end
+  end)
 
   def self.to_csv
     CSV.generate(headers: true) do |csv|
@@ -25,6 +34,10 @@ class User < ActiveRecord::Base
                 user.advisor_mobile, user.group, user.manager, user.support]
       end
     end
+  end
+  
+  def has_users?
+    User.my_users(self).exists?
   end
   
     

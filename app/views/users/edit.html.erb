@@ -26,6 +26,10 @@
         <% if current_user.admin || current_user.manager %>        
           <%= f.input :group, required: true %>
         <% end %>
+        
+        <% if current_user.admin || current_user.manager %>        
+          <%= f.input :user_code, required: true %>
+        <% end %>
 
         <% if current_user.admin %>
           Admin&#63; <%= f.check_box :admin? %> &nbsp; | &nbsp; Manager&#63; <%= f.check_box :manager? %> &nbsp; | &nbsp; Support&#63; <%= f.check_box :support? %>

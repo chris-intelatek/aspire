@@ -45,7 +45,7 @@
     					  <li><%= link_to dashboard_path do %><i class="glyphicon glyphicon-th"></i> Dashboard<% end %></li>
               <% end %>              
               
-              <% if current_user.manager || current_user.support %>
+              <% if current_user.has_users? %>
     					  <li><%= link_to users_path do %><i class="fa fa-users"></i> Users<% end %></li>
               <% end %>
 
