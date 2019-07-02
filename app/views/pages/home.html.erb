@@ -44,9 +44,12 @@
       <div class="col-md-5">
         <h3>Schedule Presentation</h3>
         <% if current_user.group == "rs" || current_user.group == "ne" || current_user.group == "ls" || current_user.group == "ac" %>
-          <p><a href="https://calendly.com/priority-greg/cpx">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
+          <p><a href="https://calendly.com/priority-greg/cpx" target="_Top">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
         <% elsif current_user.group == "se" || current_user.group == "cn" || current_user.group == "cc" %>
-          <p><a href="https://calendly.com/priority-jason/cpx">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
+          <p><a href="https://calendly.com/priority-jason/cpx" target="_Top">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
+        <% else %>
+          <p><a href="https://calendly.com/priority-greg/cpx" target="_Top">Schedule a presentation with Greg McCarthy</a></p>
+          <p><a href="https://calendly.com/priority-jason/cpx" target="_Top">Schedule a presentation with Jason Arp</a></p>
         <% end %>
       </div>
     </div>      
