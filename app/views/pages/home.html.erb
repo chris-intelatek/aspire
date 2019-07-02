@@ -5,7 +5,11 @@
 
     <div class="row">
       <div class="col-md-8 col-md-offset-1">
-        <p><em>Watch for many updates coming throughout June 2019</em></p>
+        <% if current_user.group == ("rs" || "ne" || "ls" || "ac") %>
+          <p><a href="https://calendly.com/priority-greg/cpx">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
+        <% elsif current_user.group == ("se" || "cn" || "cc") %>
+          <p><a href="https://calendly.com/priority-jason/cpx">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
+        <% end %>
       </div>
     </div>
 
