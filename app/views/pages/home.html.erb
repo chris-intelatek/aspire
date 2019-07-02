@@ -5,16 +5,6 @@
 
     <div class="row">
       <div class="col-md-8 col-md-offset-1">
-        <% if current_user.group == ("rs" || "ne" || "ls" || "ac") %>
-          <p><a href="https://calendly.com/priority-greg/cpx">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
-        <% elsif current_user.group == ("se" || "cn" || "cc") %>
-          <p><a href="https://calendly.com/priority-jason/cpx">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-8 col-md-offset-1">
         <h3>Accounts Payable Campaign Parameters</h3>
         <p><strong>$10M Minimum AP Spend</strong></p>
         <p>Target:  200+ Employees and $50M+ Revenue<br>
@@ -41,6 +31,7 @@
           <li><a href="https://www.uberconference.com/screensharing">Best Tool for Sharing Your Screen</a> <em>(no downloads needed)</em></li> 
         </ul>        
       </div>
+      
       <div class="col-md-5">
         <h3>Sales Tools</h3>
         <ul>
@@ -49,6 +40,18 @@
           <li><a href="http://aspirepartners.co/crm_docs/CPX-TheCompleteCommercialPaymentsSolution.pdf" target="_New">CPX - Complete Commercial Payments Solution BROCHURE</a></li>
         </ul>
       </div>
+      
+      <div class="col-md-5">
+        <h3>Schedule Presentation</h3>
+        <% if current_user.group == "rs" || current_user.group == "ne" || current_user.group == "ls" || current_user.group == "ac" %>
+          <p><a href="https://calendly.com/priority-greg/cpx">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
+        <% elsif current_user.group == "se" || current_user.group == "cn" || current_user.group == "cc" %>
+          <p><a href="https://calendly.com/priority-jason/cpx">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></p>
+        <% end %>
+      </div>
+    </div>      
+      
+      
     </div>
     
     <p>&nbsp;</p>
