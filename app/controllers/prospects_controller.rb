@@ -46,16 +46,14 @@ class ProspectsController < ApplicationController
   end  
   
   
-  
-  
-  
   def show
   end
 
-  def dashboard
-    @prospects = Prospect.all
-    @users = User.all
-  end
+  # def dashboard
+  #   @prospects = Prospect.all
+  #   @users = User.all
+  #   @users = User.my_users(current_user)
+  # end
 
   def intelatek
     @prospects = Prospect.all.order("created_at DESC")
@@ -117,8 +115,6 @@ class ProspectsController < ApplicationController
       render 'pay'
     end
   end
-
-
 
   def hcs
   end

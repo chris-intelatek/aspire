@@ -19,37 +19,36 @@
 
     				<% if user_signed_in? %>
 
-              <% if current_user.admin %>
-    					  <li><%= link_to intelatek_path do %><i class="glyphicon glyphicon-knight"></i> IntelaTek<% end %></li>
-              <% end %>      
+           <!--   <%# if current_user.admin %>-->
+    					  <!--<li><%#= link_to intelatek_path do %><i class="glyphicon glyphicon-knight"></i> IntelaTek<%# end %></li>-->
+           <!--   <%# end %>      -->
 
               <li><%= link_to home_path do %><i class="fa fa-home"></i> Home<% end %></li>
 
+              <% if current_user.has_users? || current_user.manager %>
+    					  <li><%= link_to dashboard_path do %><i class="glyphicon glyphicon-th"></i> Dashboard<% end %></li>
+              <% end %>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle navbar-select" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="glyphicon glyphicon-education"></i> Training & Docs
+                  <i class="glyphicon glyphicon-education"></i> Resources
                 </a>
                 <div class="dropdown-menu navbar-select" aria-labelledby="navbarDropdown">
                   <p><%= link_to "Training Videos", cps_training_vids_path %></p>
                   <p><%= link_to "Steps to Sale", cps_steps_to_sale_path %></p>
-                  <p><%= link_to "Q & A", cps_answers_path %></p>                  
+                  <p><%= link_to "Q & A", cps_answers_path %></p>
+                  <p><%= link_to "Marketing", marketing_path %></p>                  
                   <!--<p><%#= link_to "Commercial Payments", commercial_payments_path %></p>-->
                   <!--<p><%#= link_to "Instant Pay", instant_pay_path %></p>-->
                   <!--<p><%#= link_to "HealthCare Savings", healthcare_savings_path %></p>-->
                 </div>
               </li>
-      
-              
-              <% if current_user.manager %>
-    					  <li><%= link_to dashboard_path do %><i class="glyphicon glyphicon-th"></i> Dashboard<% end %></li>
-              <% end %>              
               
               <% if current_user.has_users? %>
     					  <li><%= link_to users_path do %><i class="fa fa-users"></i> My Agents<% end %></li>
               <% end %>
 
-              <li><%= link_to prospects_path, class: 'nav-link' do %><i class="fa fa-crosshairs"></i> Prospects<% end %></li>
+              <li><%= link_to prospects_path, class: 'nav-link' do %><i class="fa fa-crosshairs"></i> My Prospects<% end %></li>
 
               <li><%= link_to new_prospect_path, class: "nav-link" do %><i class="fa fa-user-plus"></i> Add Prospect<% end %></li>
               
@@ -57,7 +56,7 @@
 
     					<li><%= link_to destroy_user_session_path, method: :delete do %><i class="fa fa-lock"></i> Sign out<% end %></li>
 
-    					<li> <%= image_tag avatar_url(current_user, 60) %></li>
+    					<!--<li> <%#= image_tag avatar_url(current_user, 60) %></li>-->
 
     				<% else %>
 

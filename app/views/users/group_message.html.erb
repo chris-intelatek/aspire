@@ -1,0 +1,25 @@
+<div class="col-md-4 col-md-offset-4">
+	<div class="panel panel-gray">
+	  <div class="panel-heading">
+			<h4>Send Email Message to Your Entire Downline</h4>
+	  </div>
+	  <div class="prospect-show">
+
+        <%= form_tag 'root' do%>
+        <strong>Subject:</strong><br>
+        <%= text_field_tag 'subject', ''%>
+        <br>
+        <br>
+        <strong>Body:</strong><br>
+        <%= text_area_tag 'body', ''%>
+
+    </div>
+    <div class="panel-footer">
+      <div class="form-actions">
+        <%= submit_tag "submit",:value => "submit", class:"btn btn-slate btn-block" %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

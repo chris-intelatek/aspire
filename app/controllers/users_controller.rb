@@ -20,6 +20,12 @@ class UsersController < ApplicationController
   def show
   end
 
+  def dashboard
+    @prospects = Prospect.all
+    @users = User.my_users(current_user)
+  end
+
+
   def start_page
     if current_user.manager
       @users = User.all
@@ -47,6 +53,16 @@ class UsersController < ApplicationController
   end
 
 
+  def group_message 
+    data = params[:body]
+    subject = params[:subject]
+    email = params[current_user.email]
+    NotificationMailer.group_message(data,email,subject).deliver_later
+      flash[:success] = "Message Sent"
+      redirect_to 'root'
+  end
+
+
   private
   
   def set_user
@@ -54,7 +70,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:advisor_first_name, :advisor_last_name, :advisor_phone, :advisor_mobile, :admin, :manager, :support, :email, :password, :password_confirmation, :group,  :mailing_address, :apt_suite, :city, :state, :zip, :agree, :user_code, :notes)
+    params.require(:user).permit(:advisor_first_name, :advisor_last_name, :advisor_phone, :advisor_mobile, :admin, :manager, :support, :email, :password, :password_confirmation, :current_password, :group,  :mailing_address, :apt_suite, :city, :state, :zip, :agree, :user_code, :notes)
   end
   
 end

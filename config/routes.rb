@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get 'lead-generation', to: 'pages#lead-generation'
   get 'lead-generation-faq', to: 'pages#lead-generation-faq'
   get 'intelatek', to: 'prospects#intelatek'
-  get 'dashboard', to: 'prospects#dashboard'
+  # get 'dashboard', to: 'prospects#dashboard'
+  get 'dashboard', to: 'users#dashboard'
   get :new_lead, to: 'prospects#new_lead', as: :new_lead
   post :new_lead, to: 'prospects#new_lead_create', as: :new_lead_create
   get 'hcsq/:id', to: 'prospects#hcsq', as: :hcsq
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
   post 'pay/:id', to: 'prospects#pay_update', as: :pay_update
   match '/users',     to: 'users#index',  via: 'get'
   match '/users/:id', to: 'users#show',   via: 'get'
+  get 'group_message', to: 'users#group_message'
 
   resources :users
 

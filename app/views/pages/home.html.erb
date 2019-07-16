@@ -18,21 +18,7 @@
     
     <div class="row">
       <div class="col-md-5 col-md-offset-1">
-        <h3>Marketing Resources</h3>
-        <ul>
-          <li><a href="cps_phone_script">Zero Rejection Cold Call Script</a></li>
-          <li><a href="cps_email_to_meetings">Send Email after Scheduling Meetings</a> (use with cold call script)</li>
-          <li><a href="cps_email_sequence">Email Sequence</a> (use with Woodpecker)</li>
-        </ul>
-        <h3>Marketing Tools</h3>
-        <ul>
-          <li><a href="https://linkedhelper.com">Automate LinkedIn Marketing w/LinkedIn Helper</a> <em>($15 per month)</em></li>
-          <li><a href="https://pp.woodpecker.co/chris">Automate Cold Email Marketing w/Woodpecker</a> <em>(30 day free trial)</em></li>   
-          <li><a href="https://www.uberconference.com/screensharing">Best Tool for Sharing Your Screen</a> <em>(no downloads needed)</em></li> 
-        </ul>        
-      </div>
-      
-      <div class="col-md-5">
+
         <h3>Sales Tools</h3>
         <ul>
           <li><a href="http://aspirepartners.co/crm_docs/high_level_intro_presentation.pptx">High Level Intro Presentation PPT</a> <em>(with script in presenter notes)</em></li>
@@ -48,7 +34,7 @@
             current_user.user_code == "rs" || current_user.user_code == "ne" || current_user.user_code == "ls" || current_user.user_code == "ac" %>
             <li><a href="https://calendly.com/priority-greg/cpx" target="_Top">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></li>
           <% elsif current_user.group == "se" || current_user.group == "cn" || current_user.group == "cc" || 
-                current_user.user_code == "se" || current_user.user_code == "cn" ||current_user.user_code == "cc" %>
+                current_user.user_code == "se" || current_user.user_code == "cn" || current_user.user_code == "cc" %>
             <li><a href="https://calendly.com/priority-jason/cpx" target="_Top">Schedule a presentation for your client with an expert at Priority Commercial Payments</a></li>
           <% else %>
             <li><a href="https://calendly.com/priority-greg/cpx" target="_Top">Schedule a presentation with Greg McCarthy</a></li>

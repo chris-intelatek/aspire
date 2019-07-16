@@ -49,7 +49,15 @@
               	<td style="vertical-align:middle"><%= time_ago_in_words(user.current_sign_in_at) if user.current_sign_in_at %> ago</td>
               	<td style="vertical-align:middle"><%= user.prospects.size %></td>
               	<% if current_user.manager || current_user.support %>
-                	<td style="vertical-align:middle"><%= user.group %></td>
+                	<td style="vertical-align:middle"><% if user.group == "cc" %>Chris C<% end %></td>
+                	<td style="vertical-align:middle"><% if user.group == "rs" %>Robert<% end %></td>
+                	<td style="vertical-align:middle"><% if user.group == "ne" %>Neil<% end %></td>                	  
+                	<td style="vertical-align:middle"><% if user.group == "ls" %>Laura<% end %></td>
+                	<td style="vertical-align:middle"><% if user.group == "ac" %>Andy<% end %></td>
+                	<td style="vertical-align:middle"><% if user.group == "se" %>Stephanie<% end %></td>                	  
+                	<td style="vertical-align:middle"><% if user.group == "cn" %>Chris N<% end %></td>                	
+                	<td style="vertical-align:middle"><% if user.group == "rp" %>Assign<% end %></td>                  	
+
                 	<td style="vertical-align:middle"><% if user.admin == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
                 	<td style="vertical-align:middle"><% if user.manager == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
                 	<td style="vertical-align:middle"><% if user.support == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
