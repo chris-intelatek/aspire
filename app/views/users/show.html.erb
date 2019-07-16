@@ -119,7 +119,7 @@
 			  
 			  <tbody class="bordered">
 					<% @user.prospects.each do |prospect| %>
-						<% if (prospect.user_id == current_user.id) || current_user.manager %>
+						<% if (prospect.user.group == current_user.user_code) || current_user.manager %>
 					    <tr>
 	
 					      <td class="td-left">
