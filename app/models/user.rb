@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :prospects, :dependent => :delete_all
   has_many :comments, :dependent => :delete_all
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
@@ -59,4 +60,8 @@ class User < ActiveRecord::Base
     order(:advisor_first_name).map { |u| [u.advisor_name, u.id] }
   end
 
+  def prospects
+    user_ids = (User.my_users(self).pluck(:id) << id).uniq
+    Prospect.where(user_id: user_ids)
+  end
 end

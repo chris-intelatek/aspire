@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'lead-generation-faq', to: 'pages#lead-generation-faq'
   get 'intelatek', to: 'prospects#intelatek'
   # get 'dashboard', to: 'prospects#dashboard'
-  get 'dashboard', to: 'users#dashboard'
+  get 'dashboard', to: 'application#dashboard'
   get :new_lead, to: 'prospects#new_lead', as: :new_lead
   post :new_lead, to: 'prospects#new_lead_create', as: :new_lead_create
   get 'hcsq/:id', to: 'prospects#hcsq', as: :hcsq

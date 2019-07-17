@@ -20,12 +20,6 @@ class UsersController < ApplicationController
   def show
   end
 
-  def dashboard
-    @prospects = Prospect.all
-    @users = User.my_users(current_user)
-  end
-
-
   def start_page
     if current_user.manager
       @users = User.all
