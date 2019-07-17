@@ -45,11 +45,16 @@
               </li>
               
               <% if current_user.has_users? %>
-    					  <li><%= link_to users_path do %><i class="fa fa-users"></i> My Agents<% end %></li>
+    					  <li><%= link_to users_path do %><i class="fa fa-users"></i>
+                              <% if current_user.manager %> All Agents
+                                <% else %> My Agents
+                              <% end %><% end %></li>
               <% end %>
 
-              <li><%= link_to prospects_path, class: 'nav-link' do %><i class="fa fa-crosshairs"></i> My Prospects<% end %></li>
-
+              <li><%= link_to prospects_path, class: 'nav-link' do %><i class="fa fa-crosshairs"></i>
+                              <% if current_user.manager %> All Prospects
+                                <% else %> My Prospects
+                              <% end %><% end %></li>
               <li><%= link_to new_prospect_path, class: "nav-link" do %><i class="fa fa-user-plus"></i> Add Prospect<% end %></li>
               
     					<li><%= link_to edit_user_registration_path do %><i class="fa fa-gear"></i> <%= current_user.advisor_name %><% end %></li>
