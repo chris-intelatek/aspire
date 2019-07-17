@@ -47,13 +47,19 @@ class UsersController < ApplicationController
   end
 
 
-  def group_message 
-    data = params[:body]
-    subject = params[:subject]
-    email = params[current_user.email]
-    NotificationMailer.group_message(data,email,subject).deliver_later
-      flash[:success] = "Message Sent"
-      redirect_to 'root'
+  def group_message
+    if request.post?
+      subject = params[:subject]
+      content = params[:body]
+      
+      email_ids =  (User.my_users(current_user).pluck(:email) << current_user.email).uniq
+      
+     email_ids.each do |email|
+        NotificationMailer.group_message(email, current_user, subject, content).deliver_later
+      end
+      
+      redirect_to group_message_path
+    end
   end
 
 

@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   post 'pay/:id', to: 'prospects#pay_update', as: :pay_update
   match '/users',     to: 'users#index',  via: 'get'
   match '/users/:id', to: 'users#show',   via: 'get'
-  get 'group_message', to: 'users#group_message'
+  match 'group_message', to: 'users#group_message', via: [:get, :post]
 
   resources :users
 

@@ -5,14 +5,14 @@
 	  </div>
 	  <div class="prospect-show">
 
-        <%= form_tag 'root' do%>
-        <strong>Subject:</strong><br>
-        <%= text_field_tag 'subject', ''%>
-        <br>
-        <br>
-        <strong>Body:</strong><br>
-        <%= text_area_tag 'body', ''%>
+        <%= form_tag group_message_path, method: :post do %>
+        <div class='form-group'>
+          <strong>Subject:</strong><br>
+          <%= text_field_tag 'subject', '', class: 'form-control'%>
 
+          <strong>Body:</strong><br>
+          <%= cktext_area :body, '', cols: 40, name: 'body', ckeditor: { toolbar: 'mini' } %>
+        </div>
     </div>
     <div class="panel-footer">
       <div class="form-actions">

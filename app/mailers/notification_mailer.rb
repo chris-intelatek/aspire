@@ -1,10 +1,9 @@
 class NotificationMailer < ApplicationMailer
     
-  def group_message(data,email,subject)
-    @users = User.my_users.all
-    @body=data
-    mail(from: [current_user.advisor_name, current_user.email],
-        to: [@users.user_email, 'chris@aspirepartners.co'],
+  def group_message(email, from_user, subject, content)
+    @content = content
+    mail(reply_to: "#{from_user.advisor_name}<#{from_user.email}>",
+         to: email,
          subject: subject)
   end
 

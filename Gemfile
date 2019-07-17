@@ -16,6 +16,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sendgrid-ruby'
+gem 'ckeditor'
+
 
 group :development, :test do
   gem 'sqlite3'
@@ -25,6 +27,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'pry-rails'
 end
 
 group :production do
