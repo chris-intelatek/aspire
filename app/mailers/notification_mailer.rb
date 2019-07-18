@@ -1,9 +1,10 @@
 class NotificationMailer < ApplicationMailer
     
-  def group_message(email, from_user, subject, content)
+  def group_message(user, from_user, subject, content)
+    @user = user
     @content = content
     mail(reply_to: "#{from_user.advisor_name}<#{from_user.email}>",
-         to: email,
+         to: user.email,
          subject: subject)
   end
 

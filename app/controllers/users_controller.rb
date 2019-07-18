@@ -49,13 +49,14 @@ class UsersController < ApplicationController
 
   def group_message
     if request.post?
+      user_ids = User.my_users(current_user).pluck(:id) << current_user.id
       subject = params[:subject]
       content = params[:body]
       
-      email_ids =  (User.my_users(current_user).pluck(:email) << current_user.email).uniq
+      @users =  User.where(id: user_ids)
       
-     email_ids.each do |email|
-        NotificationMailer.group_message(email, current_user, subject, content).deliver_later
+     @users.each do |user|
+        NotificationMailer.group_message(user, current_user, subject, content).deliver_later
       end
       
       redirect_to group_message_path

@@ -17,14 +17,18 @@
     </div>
     <div class="panel-footer">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-8">
           <div class="form-actions">
             <%= f.button :submit, "Log in", class:"btn btn-slate btn-block" %>
           </div>
           <% end %>
         </div>
+        <div class="col-md-4">
+
+            <%= render 'devise/shared/links' %>
+
+        </div>        
       </div>
     </div>
   </div>
-  <div><%= render 'devise/shared/links' %></div>
 </div>
