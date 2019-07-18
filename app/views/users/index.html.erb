@@ -32,7 +32,8 @@
             <tr>
               <th class="th-left">Name</th>
               <th>Last Logged In</th>
-              <th>Prospects in CRM</th>
+              <th>CPS Prospects<br>
+                  in the CRM</th>
               <% if current_user.manager || current_user.support %>
                 <th>Aspire<br>Manager</th>
                 <th>CRM<br>Admin</th>
@@ -49,7 +50,7 @@
               	<td style="vertical-align:middle"><%= time_ago_in_words(user.current_sign_in_at) if user.current_sign_in_at %> ago</td>
               	<td style="vertical-align:middle">
               	  <% if !user.manager? || ! user.has_users? %>
-              	    <%= user.prospects.size %>
+              	    <%= user.prospects.where(cps_prospect: true).count %>
               	   <% end %></td>
               	<% if current_user.manager || current_user.support %>
                 	<td style="vertical-align:middle"><% if user.group == "cc" %>Chris C<% end %>
