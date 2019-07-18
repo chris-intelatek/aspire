@@ -1,5 +1,9 @@
     <% if @prospect.cps_prospect == false %>
-      <%= link_to "Add Commercial Payments Service", cps_path(@prospect), class: "btn btn-slate" %>
+		  <div class="row">
+		    <div class="col-md-4 col-md-offset-4">
+          <%= link_to "Add Commercial Payments Service", cps_path(@prospect), class: "btn btn-sm btn-block btn-slate" %>
+        </div>
+      </div>  
     <% else %>
       <p>&nbsp;</p>
       <hr>
@@ -72,5 +76,14 @@
           <%= render 'comments/cps_form' %>
         </div>
       </div>
-      
+
+  		<div class="row">
+  		  <div class="col-md-4 col-md-offset-4">
+      		<%= simple_form_for @prospect, url: hcs_update_path, method: :post do |f| %>
+      			<%= f.hidden_field :cps_prospect, value: 'false' %>
+            <%= f.submit "Remove Commercial Payments Service", class:"btn btn-sm btn-block btn-danger" %>
+          <% end %>            
+        </div>
+      </div>    
+
     <% end %>

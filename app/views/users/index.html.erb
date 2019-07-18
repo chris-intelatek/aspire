@@ -47,7 +47,10 @@
               <tr>
               	<td class="td-left"><%= link_to user.advisor_name, user %></td>
               	<td style="vertical-align:middle"><%= time_ago_in_words(user.current_sign_in_at) if user.current_sign_in_at %> ago</td>
-              	<td style="vertical-align:middle"><%= user.prospects.size %></td>
+              	<td style="vertical-align:middle">
+              	  <% if !user.manager? || ! user.has_users? %>
+              	    <%= user.prospects.size %>
+              	   <% end %></td>
               	<% if current_user.manager || current_user.support %>
                 	<td style="vertical-align:middle"><% if user.group == "cc" %>Chris C<% end %>
                                                   	<% if user.group == "rs" %>Robert<% end %>
