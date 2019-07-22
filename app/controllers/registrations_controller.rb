@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   include CookieManager
-  before_action :set_group, only: %i[new create]
-  before_action :ensure_group_is_set, only: %i[new create]
+  before_action :set_group, only: :new
+  before_action :ensure_group_is_set, only: :new
 
   private
 
