@@ -58,8 +58,8 @@ class UsersController < ApplicationController
      @users.each do |user|
         NotificationMailer.group_message(user, current_user, subject, content).deliver_later
       end
-      
-      redirect_to group_message_path
+      flash[:success] = "Messages Successfully Sent to Group."
+      redirect_to users_path
     end
   end
 
