@@ -1,11 +1,7 @@
-
-  <div class="col-md-8 col-md-offset-2">
-
-
+<div class="col-md-8 col-md-offset-2">
 
 	<div class="panel panel-gray">
 	  <div class="panel-heading">
-	  	
 	  	<div class="row">
 	  		<div class="col-md-6">
           <h4>Listing <%= @users.count %> Users</h4>
@@ -20,17 +16,17 @@
 					<%= link_to "Download CSV", users_path(format: "csv"), class: "btn btn-beige btn-sm" %>
 	  		</div>
 	  	</div>
-	  	
 	  </div>
 
-
   	<div class="prospect-show">
-  
     	<div class="prospect-show table-responsive">
         <table class="table table-sm index-table table-condensed">
           <thead>
             <tr>
               <th class="th-left">Name</th>
+              <% if current_user.admin %>              	
+                <th>State</th> 
+              <% end %>
               <th>Last Logged In</th>
               <th>CPS Prospects<br>
                   in the CRM</th>
@@ -47,6 +43,9 @@
             <% @users.order(:advisor_first_name).each do |user| %>
               <tr>
               	<td class="td-left"><%= link_to user.advisor_name, user %></td>
+              	<% if current_user.admin %>              	
+              	  <td style="vertical-align:middle"><%= user.state %></td>
+              	<% end %>
               	<td style="vertical-align:middle"><%= time_ago_in_words(user.current_sign_in_at) if user.current_sign_in_at %> ago</td>
               	<td style="vertical-align:middle">
               	  <% if !user.manager? || ! user.has_users? %>
@@ -68,9 +67,7 @@
       		    </tr>
         		<% end %>
           </tbody>
-          
         </table>
-        
       </div>
 
     </div>
