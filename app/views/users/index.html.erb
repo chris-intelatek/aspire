@@ -27,6 +27,7 @@
               <% if current_user.admin %>              	
                 <th>State</th> 
               <% end %>
+              <th>Agreement Date</th>
               <th>Last Logged In</th>
               <th>CPS Prospects<br>
                   in the CRM</th>
@@ -35,17 +36,20 @@
                 <th>CRM<br>Admin</th>
                 <th>CRM<br>Manager</th>
                 <th>CRM</br>Support</th>
-              <% end %>
+              <% else %>
+			          <th>Notes</th>
+			       <% end %>
             </tr>
           </thead>
                   
           <tbody>
-            <% @users.order(:advisor_first_name).each do |user| %>
+            <% @users.order(:created_at).reverse_order.each do |user| %>
               <tr>
               	<td class="td-left"><%= link_to user.advisor_name, user %></td>
               	<% if current_user.admin %>              	
               	  <td style="vertical-align:middle"><%= user.state %></td>
               	<% end %>
+              	<td style="vertical-align:middle"><%= user.created_at.strftime("%m/%d/%Y") %></td>
               	<td style="vertical-align:middle"><%= time_ago_in_words(user.current_sign_in_at) if user.current_sign_in_at %> ago</td>
               	<td style="vertical-align:middle">
               	  <% if !user.manager? || ! user.has_users? %>
@@ -63,7 +67,9 @@
                 	<td style="vertical-align:middle"><% if user.admin == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
                 	<td style="vertical-align:middle"><% if user.manager == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
                 	<td style="vertical-align:middle"><% if user.support == true %><span class="glyphicon glyphicon-ok"></span><% end %></td>
-              	<% end %>
+              	 <% else %>
+              	  <td width="400"><%= user.notes %></td>    
+                <% end %>              					      
       		    </tr>
         		<% end %>
           </tbody>
