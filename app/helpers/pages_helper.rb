@@ -15,7 +15,12 @@ module PagesHelper
 
   def my_manager
     if current_user.group == "cc" || current_user.user_code == "cc" 
-        'Chris Cunningham<br>chris@aspirepartners.co<br>(800) 410-0233 Ext 500<br>Mobile (910) 528-1421'
+        'Chris Cunningham<br>
+         chris@aspirepartners.co<br>
+         (800) 410-0233 Ext 500<br>
+         Mobile (910) 528-1421<br>
+         Click here to schedule time to <a href="https://calendly.com/chris-cunningham/aspire-discussion" target="_New">talk with your Manager</a><br>
+         Schedule <a href="https://calendly.com/chris-cunningham/ap" target="_New">your manager to help with a NON warm lead intro presentation</a>'
       elsif current_user.group == "rs" || current_user.user_code == "rs" 
         'Robert Sawyer<br>robert.sawyer@aspirepartners.co<br>(518) 424-8148'
       elsif current_user.group == "ne" || current_user.user_code == "ne" 
