@@ -24,6 +24,9 @@
         <%= f.input :password_confirmation %>
         <em>Notes entered below are not visible to users.</em>
         <%= f.input :notes %>
+        <%= f.input :user_next_action_date %>
+        <%= f.input :user_next_action %>
+        <%= f.input :list_companies %>
 
         <% if current_user.admin %>        
           <%= f.input :group, required: true %>
