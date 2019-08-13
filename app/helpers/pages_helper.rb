@@ -1,11 +1,15 @@
 module PagesHelper
 
   def calendly_link
-    if current_user.group == "rs" || current_user.group == "ne" || current_user.group == "ls" || current_user.group == "ac" || 
-      current_user.user_code == "rs" || current_user.user_code == "ne" || current_user.user_code == "ls" || current_user.user_code == "ac"
+    if current_user.group == "rs" || current_user.group == "ne" || current_user.group == "ls" || 
+      current_user.group == "ac" ||  current_user.group == "ajrc" ||
+      current_user.user_code == "rs" || current_user.user_code == "ne" || current_user.user_code == "ls" || 
+      current_user.user_code == "ac" || current_user.user_code == "ajrc"
       '<li><a href="https://calendly.com/priority-greg/cpx" target="_New">Schedule a presentation with Greg McCarthy&#39;s Team</a></li>'
     elsif current_user.group == "se" || current_user.group == "cn" || current_user.group == "cc" || 
-          current_user.user_code == "se" || current_user.user_code == "cn" || current_user.user_code == "cc"
+          current_user.group == "td" || current_user.group == "tz" || 
+          current_user.user_code == "se" || current_user.user_code == "cn" || current_user.user_code == "cc" || 
+          current_user.user_code == "td" || current_user.user_code == "tz"
       '<li><a href="https://calendly.com/priority-jason/cpx" target="_New">Schedule a presentation with Jason Arp&#39;s Team</a></li>'
     else
       '<li><a href="https://calendly.com/priority-greg/cpx" target="_New">Schedule a presentation with Greg McCarthy&#39;s Team</a></li>
@@ -33,6 +37,12 @@ module PagesHelper
     	  'Stephanie Elad<br>stephanie.elad@aspirepartners.co<br>858-735-8904'              	  
     	elsif  current_user.group == "cn" || current_user.user_code == "cn" 
     	   'Chris Napier<br>chris.napier@aspirepartners.co<br>(717) 645-2413'
+    	elsif current_user.group == "ajrc" || current_user.user_code == "ajrc" 
+    	  'Alan Callaghan<br>alan.callaghan@aspirepartners.co<br>(954) 614-6211'
+    	elsif current_user.group == "td" || current_user.user_code == "td" 
+    	  'Terri Zielonko<br>terri.zielonko@aspirepartners.co<br>(618) 304-3430'              	  
+    	elsif  current_user.group == "tz" || current_user.user_code == "tz" 
+    	   'Chris Napier<br>chris.napier@aspirepartners.co<br>(717) 645-2413'    	   
     	 else 
     	   'You do not have an assigned manager.  Please contact admin for manager assignment: admin@aspirepartners.co'
     end
