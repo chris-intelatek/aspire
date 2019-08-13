@@ -75,9 +75,11 @@
                 <% end %>              					      
       		    </tr>
       		    <% if !current_user.manager %>
-        		    <tr>
-                	<td colspan="6">Notes: <%= user.notes %></td>         		    
-        		    </tr>
+      		      <% if user.notes %>
+          		    <tr>
+                  	<td  style="text-align:left" colspan="6">Notes: <%= user.notes %></td>         		    
+          		    </tr>
+        		    <% end %>
       		    <% end %>
       		    
         		<% end %>
