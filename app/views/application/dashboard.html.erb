@@ -6,32 +6,124 @@
 
 		<% if current_user.manager %>
 			<div class="row">
-				<div class="col-md-6">
-					<div class="well dashboard-panel dashboard-bckg-1 ">
-						<h1 align="center"><%= @users.count %></h1>
-						<p>&nbsp;</p>
-						<h4 align="center">Total Users in CRM</h4>
+				
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-sm-12">					
+							<div class="well dashboard-panel dashboard-bckg-1 ">
+								<h1 align="center"><%= total_agents %></h1>
+								<p>&nbsp;</p>
+								<h4 align="center">Total Agents</h4>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">					
+							<div class="well dashboard-panel dashboard-bckg-2 ">
+								<h1 align="center"><%= @users.count %></h1>
+								<p>&nbsp;</p>
+								<h4 align="center">Total Users in CRM</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="well dashboard-panel dashboard-bckg-3-2">
+						<h3 align="center">Total Agents Per Manager</h3>
+						<h4>
+							<table align="center">
+								<tr>
+									<td><%= @users.where(group: "ajrc").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Alan Callaghan</td>
+								</tr>
+								<tr>
+									<td><%= @users.where(group: "ac").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Andy Charles</td>
+								</tr>
+								<tr>
+									<td><%= @users.where(group: "cc").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Chris Cunningham</td>
+								</tr>
+								<tr>
+									<td><%= @users.where(group: "cn").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Chris Napier</td>
+								</tr>
+								<tr>									
+									<td><%= @users.where(group: "ls").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Laura Sardilli</td>
+								</tr>
+								<tr>									
+									<td><%= @users.where(group: "ne").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Neil Evans</td>
+								</tr>
+								<tr>									
+									<td><%= @users.where(group: "rs").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Robert Sawyer</td>
+								</tr>
+								<tr>									
+									<td><%= @users.where(group: "se").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Stepanie Elad</td>
+								</tr>
+								<tr>									
+									<td><%= @users.where(group: "td").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Thomas DePaola</td>
+								</tr>
+								<tr>									
+									<td><%= @users.where(group: "tz").count %></td><td>&nbsp;&nbsp;&nbsp;</td><td>Terri Zielonko</td>
+								</tr>
+							</table>
+						</h4>
 					</div>
 				</div>
 				
-				<div class="col-md-6">
-					<div class="well dashboard-panel dashboard-bckg-2">
-						<h3 align="center">Total Agents Per Manager</h4>
-						<h4>
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "cc").count %>&nbsp; Chris Cunningham<br>							
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "rs").count %>&nbsp; Robert Sawyer<br>
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "ne").count %>&nbsp; Neil Evans<br>							
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "ls").count %>&nbsp; Laura Sardilli<br>
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "ac").count %>&nbsp; Andy Charles<br>							
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "se").count %>&nbsp; Stepanie Elad<br>
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "cn").count %>&nbsp; Chris Napier<br>						
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "ajrc").count %>&nbsp; Alan Callaghan<br>
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "tz").count %>&nbsp; Terri Zielonko<br>						
-							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "td").count %>&nbsp; Thomas DePaola<br>
+				
+				
+				<div class="col-md-4">
+					<div class="well dashboard-panel dashboard-bckg-3">
+						<h3 align="center">% Agents Per Manager</h3>
+							<div id="piechart"></div>
+							
+							<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+							
+							<script type="text/javascript">
+							// Load google charts
+							google.charts.load('current', {'packages':['corechart']});
+							google.charts.setOnLoadCallback(drawChart);
+							
+							// Draw the chart and set the chart values
+							function drawChart() {
+							  var data = google.visualization.arrayToDataTable([
+							  ['Manager', 'Agents'],
+							  ['Alan', <%= @users.where(group: "ajrc").count %>],
+							  ['Andy', <%= @users.where(group: "ac").count %>],
+							  ['Chris C', <%= @users.where(group: "cc").count %>],
+							  ['Chris N', <%= @users.where(group: "cn").count %>],
+							  ['Laura', <%= @users.where(group: "ls").count %>],
+							  ['Neil', <%= @users.where(group: "ne").count %>],
+							  ['Robert', <%= @users.where(group: "rs").count %>],
+							  ['Stephanie', <%= @users.where(group: "se").count %>],
+							  ['Thomas', <%= @users.where(group: "td").count %>],
+							  ['Terri', <%= @users.where(group: "tz").count %>],
+							  ['Alan Callaghan', <%= @users.where(group: "ajrc").count %>]
+							]);
+							
+							  // Optional; add a title and set the width and height of the chart
+							  var options = {backgroundColor: 'transparent',
+							                 'width':400,
+							                 'height':300,
+							                 //'title' : 'My Chart',
+							                 //legend : { position : 'bottom' }
+							                 };
+							
+							
+							  // Display the chart inside the <div> element with id="piechart"
+							  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+							  chart.draw(data, options);
+							}
+							</script>
+							
 					</div>
 				</div>
+				
+				
+				
+				
+				
 			</div>
 		<% end %>
+
 
 	</div>
 
