@@ -160,6 +160,7 @@
 					<h3 align="center">Prospects Status:</h4>
 					<h4>
 						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Intro Presentation Scheduled").count %>&nbsp; Intro Presentations Scheduled<br>
+						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Scheduling SME Presentation").count %>&nbsp; Scheduling SME Presentation<br>
 						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "SME Presentation Scheduled").count %>&nbsp;  SME Presentations Scheduled<br>
 						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Waiting for Supplier Data").count %>&nbsp;  Waiting for Supplier Data<br>
 						&nbsp; &nbsp; &nbsp; &nbsp; <%= @prospects.where(cps_status: "Supplier Match Presentation Scheduled").count %>&nbsp;  Supplier Match Pres Scheduled<br>
