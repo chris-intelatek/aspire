@@ -68,12 +68,10 @@
 					</div>
 				</div>
 				
-				
-				
 				<div class="col-md-4">
-					<div class="well dashboard-panel dashboard-bckg-3">
+					<div class="well dashboard-panel dashboard-bckg-1-2">
 						<h3 align="center">% Agents Per Manager</h3>
-							<div id="piechart"></div>
+							<div align="center" id="piechart"></div>
 							
 							<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 							
@@ -85,7 +83,7 @@
 							// Draw the chart and set the chart values
 							function drawChart() {
 							  var data = google.visualization.arrayToDataTable([
-							  ['Manager', 'Agents'],
+							  ['Manager', 'value'],
 							  ['Alan', <%= @users.where(group: "ajrc").count %>],
 							  ['Andy', <%= @users.where(group: "ac").count %>],
 							  ['Chris C', <%= @users.where(group: "cc").count %>],
@@ -102,9 +100,10 @@
 							  // Optional; add a title and set the width and height of the chart
 							  var options = {backgroundColor: 'transparent',
 							                 'width':400,
-							                 'height':300,
+							                 'height':250,
 							                 //'title' : 'My Chart',
 							                 //legend : { position : 'bottom' }
+							            		// pieSliceText: 'value'
 							                 };
 							
 							
@@ -116,11 +115,8 @@
 							
 					</div>
 				</div>
-				
-				
-				
-				
-				
+
+
 			</div>
 		<% end %>
 
