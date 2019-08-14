@@ -3,23 +3,63 @@
 
 	<div class="col-md-12">
 		
-		<div class="row">
-			<div class="col-md-6">
-				<div class="well dashboard-panel dashboard-bckg-1 ">
-					<h1 align="center"><%= @prospects.count %></h1>
-					<p>&nbsp;</p>
-					<h4 align="center">Total Prospects in CRM</h4>
+
+		<% if current_user.manager %>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="well dashboard-panel dashboard-bckg-1 ">
+						<h1 align="center"><#%= @prospects.count %></h1>
+						<p>&nbsp;</p>
+						<h4 align="center">Total Prospects in CRM</h4>
+					</div>
+				</div>
+		
+				<div class="col-md-4">
+					<div class="well dashboard-panel dashboard-bckg-2 ">
+						<h1 align="center"><%= @users.count %></h1>
+						<p>&nbsp;</p>
+						<h4 align="center">Total Users in CRM</h4>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="well dashboard-panel dashboard-bckg-1-4">
+						<h3 align="center">Prospects Status:</h4>
+						<h4>
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "cc").count %>&nbsp; Chris Cunningham<br>							
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "rs").count %>&nbsp; Robert Sawyer<br>
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "ne").count %>&nbsp; Neil Evans<br>							
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "ls").count %>&nbsp; Laura Sardilli<br>
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "ac").count %>&nbsp; Andy Charles<br>							
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "se").count %>&nbsp; Stepanie Elad<br>
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "cn").count %>&nbsp; Chris Napier<br>						
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "ajrc").count %>&nbsp; Alan Callaghan<br>
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "tz").count %>&nbsp; Terri Zielonko<br>						
+							&nbsp; &nbsp; &nbsp; &nbsp; <%= @users.where(group: "td").count %>&nbsp; Thomas DePaola<br>
+					</div>
 				</div>
 			</div>
-	
-			<div class="col-md-6">
-				<div class="well dashboard-panel dashboard-bckg-2 ">
-					<h1 align="center"><%= @users.count %></h1>
-					<p>&nbsp;</p>
-					<h4 align="center">Total Users in CRM</h4>
+		<% else %>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="well dashboard-panel dashboard-bckg-1 ">
+						<h1 align="center"><#%= @prospects.count %></h1>
+						<p>&nbsp;</p>
+						<h4 align="center">Total Prospects in CRM</h4>
+					</div>
+				</div>
+		
+				<div class="col-md-6">
+					<div class="well dashboard-panel dashboard-bckg-2 ">
+						<h1 align="center"><%= @users.count %></h1>
+						<p>&nbsp;</p>
+						<h4 align="center">Total Users in CRM</h4>
+					</div>
 				</div>
 			</div>
-		</div>
+		<% end %>
+
+	</div>
 
 		<p>&nbsp;</p>
 		<p>&nbsp;</p>
