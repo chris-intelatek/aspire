@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if current_user.manager
       @users = User.all
       @prospects = Prospect.all
-      render(:template => 'prospects/dashboard')
+      render(:template => 'application/dashboard')
     else
       render(:template => 'pages/home')
     end
