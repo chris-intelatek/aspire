@@ -18,7 +18,7 @@
 						<%= submit_tag "Search", class:"btn btn-slate btn-sm" %>
 					<% end %>
 				</div>
-				<% if current_user.manager %>
+				<% if current_user.admin %>
 		  		<div class="col-md-2 pull-right">
 						<%= link_to "Download CSV", prospects_path(format: "csv"), class: "btn btn-beige btn-sm" %>
 		  		</div>

@@ -16,6 +16,12 @@ class User < ActiveRecord::Base
   validates :zip, :presence => true
   validates :agree, :presence => true
   validates :user_code, uniqueness: true, if: -> {user_code.present?}
+
+
+  after_create :welcome_send
+    def welcome_send
+      NotificationMailer.new_agent_welcome(self).deliver
+    end
   
   scope :my_users, (lambda do |user|
     if user.manager || user.support
@@ -28,11 +34,11 @@ class User < ActiveRecord::Base
   def self.to_csv
     CSV.generate(headers: true) do |csv|
       csv << ["First Name", "Last Name", "Prospects", "Logged in", "Email", "Phone",
-              "Mobile", "Group", "Manager", "Support"]
+              "Mobile", "Group", "Manager"]
       all.each do |user|
         csv << [user.advisor_first_name, user.advisor_last_name, user.prospects.size, 
                 user.current_sign_in_at, user.email, user.advisor_phone,
-                user.advisor_mobile, user.group, user.manager, user.support]
+                user.advisor_mobile, user.group, user.manager]
       end
     end
   end

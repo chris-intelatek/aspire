@@ -8,10 +8,10 @@ class NotificationMailer < ApplicationMailer
          subject: subject)
   end
 
-  def new_hcsq(prospect)
-    @prospect = prospect
-    mail(to: [prospect.user_email, 'chris@bluecoastsavings.com'],
-         subject: 'New HCSQ Submitted')
+  def new_agent_welcome(user)
+    @user = user
+    mail(to: [user.email, 'chris@aspirepartners.co'],
+         subject: 'Welcome to Aspire')
   end
   
   def new_meeting(prospect)

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_action :set_user, only: [:show, :edit, :destroy, :update]
 
-
+  
   def index
     if params[:search]
       @users = User.my_users(current_user).search(params[:search]).order("created_at DESC")
