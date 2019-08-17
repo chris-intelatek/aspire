@@ -17,7 +17,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sendgrid-ruby'
 gem 'ckeditor'
-
+gem 'sucker_punch'
 
 group :development, :test do
   gem 'sqlite3'

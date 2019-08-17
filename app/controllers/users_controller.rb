@@ -49,15 +49,7 @@ class UsersController < ApplicationController
 
   def group_message
     if request.post?
-      user_ids = User.my_users(current_user).pluck(:id) << current_user.id
-      subject = params[:subject]
-      content = params[:body]
-      
-      @users =  User.where(id: user_ids)
-      
-     @users.each do |user|
-        NotificationMailer.group_message(user, current_user, subject, content).deliver_later
-      end
+      GroupMessageWorker.perform_async(current_user, params[:subject], params[:body])
       flash[:success] = "Messages Successfully Sent to Group."
       redirect_to users_path
     end
