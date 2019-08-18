@@ -14,7 +14,7 @@ class NotificationMailer < ApplicationMailer
     @user = user
     
     if @user.group == "cc"
-      manager_email = 'chris@aspirepartners.co'
+      manager_email = 'chris@bluecoastsavings.com'
     elsif @user.group == "rs" 
       manager_email = 'robert.sawyer@aspirepartners.co'
     elsif @user.group == "ne" 
