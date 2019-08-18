@@ -4,9 +4,11 @@ class NotificationMailer < ApplicationMailer
   def group_message(user, from_user, subject, content)
     @user = user
     @content = content
-    mail(from: "#{from_user.advisor_name}<#{from_user.email}>",
-         to: user.email,
-         subject: subject)
+    mail(
+        from: "#{from_user.advisor_name}<#{from_user.email}>",
+        to: user.email,
+        subject: subject
+        )
   end
 
 
@@ -36,10 +38,11 @@ class NotificationMailer < ApplicationMailer
   	end
     
     mail(
-        from: "Aspire <noreply@aspirepartners.co>",
+        from: "Aspire <#{manager_email}>",
         to: [user.email, manager_email],
-        bcc: 'chris@intelatek.com',
-        subject: 'Welcome to Aspire')
+        bcc: ['chris@aspirepartners.co', 'laura@aspirepartners.co', 'shawn@bluecoastsavings.com']
+        subject: 'Welcome to Aspire'
+        )
   end
 
   
