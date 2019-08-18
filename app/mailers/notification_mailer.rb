@@ -38,7 +38,7 @@ class NotificationMailer < ApplicationMailer
     mail(
         from: "Aspire <#{manager_email}>",
         to: [user.email, manager_email],
-        bcc: ['admin@aspirepartners.co', 'laura@aspirepartners.co', 'shawn@bluecoastsavings.com']
+        bcc: ['admin@aspirepartners.co', 'laura@aspirepartners.co', 'shawn@bluecoastsavings.com'],
         subject: 'Welcome to Aspire'
         )
   end
