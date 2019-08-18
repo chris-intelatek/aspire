@@ -1,5 +1,5 @@
 module ApplicationHelper
-    
+
   def avatar_url(user, size)
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
@@ -45,7 +45,5 @@ module ApplicationHelper
     @prospects.where(hcs_status: "Not Qualified").count +
     @prospects.where(hcs_status: "Other - No Sale").count
   end
-
-
     
 end

@@ -20,6 +20,20 @@ class User < ActiveRecord::Base
 
   after_create :welcome_send
     def welcome_send
+      
+      @manager_email = 
+        if :group == "cc" 'chris@salesleader.co'
+          elsif :group == "rs" 'robert.sawyer@aspirepartners.co'
+          elsif :group == "ne" 'neil.evans@aspirepartners.co'
+        	elsif :group == "ls" 'laura.sardilli@aspirepartners.co'
+        	elsif :group == "ac" 'andy.charles@aspirepartners.co'
+        	elsif :group == "se" 'stephanie.elad@aspirepartners.co'              	  
+        	elsif :group == "cn" 'chris.napier@aspirepartners.co'
+        	elsif :group == "ajrc" 'alan.callaghan@aspirepartners.co'
+        	elsif :group == "tz" 'terri.zielonko@aspirepartners.co'              	  
+        	else  :group == "td" 'thomas.depaola@aspirepartners.co'
+        end
+        
       NotificationMailer.new_agent_welcome(self).deliver
     end
   

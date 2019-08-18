@@ -4,12 +4,41 @@
 
 <p>We have received your agreement and your copy is below.</p>
 
+Your Manager is:
+<ul>
+   <% if @user.group == "cc" %>
+      Chris Cunningham<br>chris@aspirepartners.co<br>(800) 410-0233 Ext 500<br>Mobile (910) 528-1421'
+    <%elsif @user.group == "rs" %>
+      Robert Sawyer<br>robert.sawyer@aspirepartners.co<br>(518) 424-8148
+    <% elsif @user.group == "ne" %>
+      Neil Evans<br>neil.evans@aspirepartners.co<br>(323) 309-7225
+    <% elsif @user.group == "ls" %>
+      Laura Sardilli<br>laura.sardilli@aspirepartners.co<br>(703) 628-5816
+    <% elsif @user.group == "ac" %>
+      Andy Charles<br>andy.charles@aspirepartners.co<br>(207)749-2631
+    <% elsif @user.group == "se" %>
+      Stephanie Elad<br>stephanie.elad@aspirepartners.co<br>(858) 735-8904             	  
+    <% elsif @user.group == "cn" %>
+      Chris Napier<br>chris.napier@aspirepartners.co<br>(717) 645-2413
+    <% elsif @user.group == "ajrc" %>
+      Alan Callaghan<br>alan.callaghan@aspirepartners.co<br>(954) 614-6211
+    <% elsif @user.group == "tz" %>
+      Terri Zielonko<br>terri.zielonko@aspirepartners.co<br>(618) 304-3430            	  
+    <% elsif @user.group == "td" %>
+      Thomas DePaola<br>thomas.depaola@aspirepartners.co<br>(908) 337-0029
+    <% else %>
+    	 'You do not have an assigned manager.  Please contact admin for manager assignment: admin@aspirepartners.co'%>
+    <% end %>
+   
+   
+</ul>
+
 <p>To get started, please:</p>
 
 <ol>
-    <li>Get back to your manager to discuss next steps to get started.<br><br></li>
-    <li>Take a look around the resource center.<br><br></li>
-    <li>Register for the next training webinar and review previously recorded webinars.<br><br></li>
+  <li>Get back to your manager to discuss next steps to get started.<br><br></li>
+  <li>Take a look around the resource center.<br><br></li>
+  <li>Register for the next training webinar and review previously recorded webinars.<br><br></li>
 </ol>
 
 <br>

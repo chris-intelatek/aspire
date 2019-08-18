@@ -26,5 +26,5 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to new_user_session_path, flash: { danger:  'Please contact your administrator.' } and return 
     end
   end
-  
+
 end
