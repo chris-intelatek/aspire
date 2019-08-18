@@ -14,7 +14,7 @@ class NotificationMailer < ApplicationMailer
     @user = user
     
     if @user.group == "cc"
-      manager_email = 'chris@bluecoastsavings.com'
+      manager_email = 'chris@aspirepartners.co'
     elsif @user.group == "rs" 
       manager_email = 'robert.sawyer@aspirepartners.co'
     elsif @user.group == "ne" 
@@ -35,8 +35,11 @@ class NotificationMailer < ApplicationMailer
   	  manager_email = 'thomas.depaola@aspirepartners.co'
   	end
     
-    mail(to: [user.email, 'chris@aspirepartners.co', manager_email],
-         subject: 'Welcome to Aspire')
+    mail(
+        from: "Aspire <noreply@aspirepartners.co>",
+        to: [user.email, manager_email],
+        bcc: 'chris@intelatek.com',
+        subject: 'Welcome to Aspire')
   end
 
   
