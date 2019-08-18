@@ -34,13 +34,15 @@ class NotificationMailer < ApplicationMailer
   	elsif @user.group == "td" 
   	  manager_email = 'thomas.depaola@aspirepartners.co'
   	end
-    
+
     mail(
-        from: "Aspire <noreply@aspirepartners.co>",
+        from: "Aspire <#{manager_email}>",
         to: [user.email, manager_email],
-        bcc: 'chris@intelatek..com',
-        subject: 'Welcome to Aspire')
+        bcc: ['admin@aspirepartners.co', 'laura@aspirepartners.co', 'shawn@bluecoastsavings.com']
+        subject: 'Welcome to Aspire'
+        )
   end
+
 
   
   def new_meeting(prospect)
