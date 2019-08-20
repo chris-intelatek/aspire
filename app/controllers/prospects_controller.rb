@@ -4,14 +4,14 @@ class ProspectsController < ApplicationController
   
   
   def index
-    @hcs_status = Prospect.select(:hcs_status).order(:hcs_status).distinct
-    @pay_status = Prospect.select(:pay_status).order(:pay_status).distinct
+    # @hcs_status = Prospect.select(:hcs_status).order(:hcs_status).distinct
+    # @pay_status = Prospect.select(:pay_status).order(:pay_status).distinct
     @cps_status = Prospect.select(:cps_status).order(:cps_status).distinct
     if params[:hcs_status] != nil
-      @prospects = Prospect.where(hcs_status: params[:hcs_status])
-      elsif params[:pay_status] != nil
-        @prospects = Prospect.where(pay_status: params[:pay_status])
-      elsif params[:cps_status] != nil
+      # @prospects = Prospect.where(hcs_status: params[:hcs_status])
+      # elsif params[:pay_status] != nil
+      #   @prospects = Prospect.where(pay_status: params[:pay_status])
+      # elsif params[:cps_status] != nil
         @prospects = Prospect.where(cps_status: params[:cps_status])
       elsif params[:search]
         @prospects = Prospect.search(params[:search]).order("created_at DESC")
@@ -35,10 +35,10 @@ class ProspectsController < ApplicationController
   #   @users = User.my_users(current_user)
   # end
 
-  def intelatek
-    @prospects = Prospect.all.order("created_at DESC")
-    @users = User.all
-  end
+  # def intelatek
+  #   @prospects = Prospect.all.order("created_at DESC")
+  #   @users = User.all
+  # end
   
   def new
     @prospect = current_user.prospects.build
@@ -54,20 +54,20 @@ class ProspectsController < ApplicationController
     end
   end
   
-  def new_lead
-    @prospect = Prospect.new
-  end
+  # def new_lead
+  #   @prospect = Prospect.new
+  # end
   
-  def new_lead_create
-    @prospect = Prospect.new(prospect_params)
-    if @prospect.save
-      NotificationMailer.new_meeting(@prospect).deliver_later
-      flash[:success] = "New prospect added."
-      redirect_to 'http://intelatek.com/intranet/submitted.html'
-    else
-      render 'new_lead'
-    end
-  end
+  # def new_lead_create
+  #   @prospect = Prospect.new(prospect_params)
+  #   if @prospect.save
+  #     NotificationMailer.new_meeting(@prospect).deliver_later
+  #     flash[:success] = "New prospect added."
+  #     redirect_to 'http://intelatek.com/intranet/submitted.html'
+  #   else
+  #     render 'new_lead'
+  #   end
+  # end
 
   def edit
   end
@@ -87,39 +87,39 @@ class ProspectsController < ApplicationController
   def pay
   end
   
-  def pay_update
-    if @prospect.update(prospect_params)
-      flash[:success] = "Prospect has been updated."
-      redirect_to prospect_path
-    else
-      render 'pay'
-    end
-  end
+  # def pay_update
+  #   if @prospect.update(prospect_params)
+  #     flash[:success] = "Prospect has been updated."
+  #     redirect_to prospect_path
+  #   else
+  #     render 'pay'
+  #   end
+  # end
 
-  def hcs
-  end
+  # def hcs
+  # end
   
-  def hcs_update
-    if @prospect.update(prospect_params)
-      flash[:success] = "Prospect has been updated."
-      redirect_to prospect_path
-    else
-      render 'hcs'
-    end
-  end
+  # def hcs_update
+  #   if @prospect.update(prospect_params)
+  #     flash[:success] = "Prospect has been updated."
+  #     redirect_to prospect_path
+  #   else
+  #     render 'hcs'
+  #   end
+  # end
 
-  def hcsq
-  end
+  # def hcsq
+  # end
   
-  def hcsq_update
-    if @prospect.update(prospect_params)
-      NotificationMailer.new_hcsq(@prospect).deliver_later
-      flash[:success] = "Prospect has been updated."
-      redirect_to prospect_path
-    else
-      render 'bchq'
-    end
-  end
+  # def hcsq_update
+  #   if @prospect.update(prospect_params)
+  #     NotificationMailer.new_hcsq(@prospect).deliver_later
+  #     flash[:success] = "Prospect has been updated."
+  #     redirect_to prospect_path
+  #   else
+  #     render 'bchq'
+  #   end
+  # end
   
   def update
     if @prospect.update(prospect_params)

@@ -29,23 +29,9 @@
 		<div class="prospect-show table-responsive">
 			
 			<table class="table index-table table-condensed">
-		  	<!--<tr class="bordered">-->
-		  	<!--	<td colspan="3"></td>-->
-		  	<!--	<td>&nbsp;</td>		  		-->
-		  	<!--	<td colspan="3"><strong>Commercial Payments</strong></td>-->
-		  	<!--	<td>&nbsp;</td>-->
-		  	<!--	<td colspan="3"><strong>HealthCare Savings</strong></td>-->
-		  	<!--	<td>&nbsp;</td>-->
-		  	<!--	<td colspan="3"><strong>Instant Pay</strong></td>-->
-		  	<!--</tr>-->
-
 		    <tr class="bordered">
 		      <td><strong>Consultant</strong></td>
 		      <td><strong>Prospect</strong></td>
-			    <!--<td><strong>Employees</strong></td>-->
-
-			    <!--<td>&nbsp;</td>-->
-			    
 		      <td><strong>Next Action<br>Date<strong></td>			      
 		      <td><strong>Next Action</strong></td>
 		      <td>
@@ -54,49 +40,14 @@
 							  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong>Status </strong><span class="caret"></span></a>
 							  <ul class="dropdown-menu dropdown-menu-right status-menu" style="list-style: none;">
 							    <li><%= link_to "All", prospects_path %></li>
-							    <% @pay_status.each do |h| %>
-							      <li class="black"><%= link_to "#{h.pay_status}", prospects_path(pay_status: h.pay_status) %></li>
+							    <% @cps_status.each do |h| %>
+							      <li class="black"><%= link_to "#{h.cps_status}", prospects_path(cps_status: h.cps_status) %></li>
 							    <% end %>
 							  </ul>
 							</li>
 						</div>
 					</td>
 
-			  <!--  <td>&nbsp;</td>-->
-			    
-		   <!--   <td><strong>Next Action<br>Date</strong></td>  -->
-		   <!--   <td><strong>Next Action</strong></td>-->
-		   <!--   <td>-->
-		   <!--   	<div class="status">-->
-			  <!--    	<li class="dropdown">-->
-					<!--		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong>Status </strong><span class="caret"></span></a>-->
-					<!--		  <ul class="dropdown-menu dropdown-menu-right status-menu" style="list-style: none;">-->
-					<!--		    <li><%#= link_to "All", prospects_path %></li>-->
-					<!--		    <%# @hcs_status.each do |h| %>-->
-					<!--		      <li class="black"><%#= link_to "#{h.hcs_status}", prospects_path(hcs_status: h.hcs_status) %></li>-->
-					<!--		    <%# end %>-->
-					<!--		  </ul>-->
-					<!--		</li>-->
-					<!--	</div>-->
-					<!--</td>-->
-
-			  <!--  <td>&nbsp;</td>-->
-
-		   <!--   <td><strong>Next Action<br>Date</strong></td>-->
-		   <!--   <td><strong>Next Action</strong></td>-->
-		   <!--   <td>-->
-		   <!--   	<div class="status">-->
-			  <!--    	<li class="dropdown">-->
-					<!--		  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong>Status </strong><span class="caret"></span></a>-->
-					<!--		  <ul class="dropdown-menu dropdown-menu-right status-menu" style="list-style: none;">-->
-					<!--		    <li><%#= link_to "All", prospects_path %></li>-->
-					<!--		    <%# @pay_status.each do |b| %>-->
-					<!--		      <li class="black"><%#= link_to "#{b.pay_status}", prospects_path(pay_status: b.pay_status) %></li>-->
-					<!--		    <%# end %>-->
-					<!--		  </ul>-->
-					<!--		</li>-->
-					<!--	</div>-->
-					<!--</td>-->
 				</tr>
 			  
 			  <tbody class="bordered">
@@ -105,17 +56,15 @@
 					    <tr>
 	
 					      <td class="td-left">
-					      	<%= prospect.user.advisor_first_name + ' ' + prospect.user.advisor_last_name %>
+					      	<% if !prospect.user.nil? %>
+					      		<%= prospect.user.advisor_first_name + ' ' + prospect.user.advisor_last_name %>
+					      	<% end %>
 					      </td>
 					      
 					      <td class="td-left">
 					     		<em><%= link_to prospect.organization, prospect %></em>
 					      </td>
-								
-					      <!--<td><%#= prospect.employees %></td>-->
 
-								<!--<td>&nbsp;</td>-->
-								
 					      <td><% if !prospect.cps_next_action_date.nil? %>
 					      			<%= prospect.cps_next_action_date.strftime("%m/%d/%Y") %>
 					      		<% end %>
@@ -125,25 +74,6 @@
 
 					      <td><%= prospect.cps_status %></td>
 
-								<!--<td>&nbsp;</td>-->
-								
-					   <!--   <td><%# if !prospect.hcs_next_action_date.nil? %>-->
-					   <!--   			<%#= prospect.hcs_next_action_date.strftime("%m/%d/%Y") %>-->
-					   <!--   		<%# end %>-->
-					   <!--   </td>-->
-					      
-					   <!--   <td><%#= prospect.hcs_next_action %></td>-->
-
-					   <!--   <td><%#= prospect.hcs_status %></td>-->
-					      
-								<!--<td>&nbsp;</td>-->
-
-					   <!--   <td><%# if !prospect.pay_next_action_date.nil? %><%#= prospect.pay_next_action_date.strftime("%m/%d/%Y") %><%# end %></td>-->
-					      
-					   <!--   <td><%#= prospect.pay_next_action %></td>-->
-
-					   <!--   <td><%#= prospect.pay_status %></td>-->
-					      
 					    </tr>
 						<% end %>
 

@@ -7,7 +7,11 @@
     <div class="prospect-show">
   
   		<%= simple_form_for @prospect do |f| %>
-
+  		
+  		<% if current_user.admin %>
+  		  <%= f.input :user_id, required: true, collection: User.collection, label: "Consultant Name", include_blank: true, include_hidden: false %>
+  		<% end %>
+  		
   			<h4>Company/Organization Info</h4>
   			<br>
   			<%= f.input :organization, required: true, autofocus: true, label: "Prospect Company or Organization Name" %>
