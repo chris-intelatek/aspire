@@ -56,6 +56,8 @@
                                 <% else %> My Prospects
                               <% end %><% end %></li>
               <li><%= link_to new_prospect_path, class: "nav-link" do %><i class="fa fa-user-plus"></i> Add Prospect<% end %></li>
+
+              <li><%= link_to compensation_path, class: "nav-link" do %><i class="fa fa-money"></i> Compensation<% end %></li>
               
     					<li><%= link_to edit_user_registration_path do %><i class="fa fa-gear"></i> <%= current_user.advisor_name %><% end %></li>
 

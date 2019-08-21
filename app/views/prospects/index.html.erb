@@ -15,12 +15,12 @@
 	  		<div class="col-md-4">
 		  		<%= form_tag(prospects_path, :method => "get", id: "search-form") do %>
 						<%= text_field_tag :search, params[:search], placeholder: "Search Prospects" %>
-						<%= submit_tag "Search", class:"btn btn-slate btn-sm" %>
+						<%= submit_tag "Search", class:"btn btn-slate btn-xs" %>
 					<% end %>
 				</div>
 				<% if current_user.admin %>
 		  		<div class="col-md-2 pull-right">
-						<%= link_to "Download CSV", prospects_path(format: "csv"), class: "btn btn-beige btn-sm" %>
+						<%= link_to "Download CSV", prospects_path(format: "csv"), class: "btn btn-beige btn-xs" %>
 		  		</div>
 		  	<% end %>
 	  	</div>

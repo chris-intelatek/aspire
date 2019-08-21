@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
   get 'commercial_payments', to: 'pages#commercial-payments'
   get 'healthcare_savings', to: 'pages#healthcare-savings'
-  get 'instant_pay', to: 'pages#instant-pay'
+  get 'instant_pay', to: 'pages#instant_pay'
+  get 'compensation', to: 'pages#compensation'
   get 'home', to: 'pages#home'
   get 'docs', to: 'pages#docs'
   get 'marketing', to: 'pages#marketing'

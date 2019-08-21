@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def instant_pay
   end
 
-  def healthcare_savings
+  def compensation
   end
 
   def docs
