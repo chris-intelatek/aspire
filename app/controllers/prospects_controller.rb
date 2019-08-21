@@ -7,12 +7,12 @@ class ProspectsController < ApplicationController
     # @hcs_status = Prospect.select(:hcs_status).order(:hcs_status).distinct
     # @pay_status = Prospect.select(:pay_status).order(:pay_status).distinct
     @cps_status = Prospect.select(:cps_status).order(:cps_status).distinct
-    if params[:hcs_status] != nil
-      # @prospects = Prospect.where(hcs_status: params[:hcs_status])
+    if params[:cps_status] != nil
+      @prospects = Prospect.where(cps_status: params[:cps_status])
       # elsif params[:pay_status] != nil
       #   @prospects = Prospect.where(pay_status: params[:pay_status])
-      # elsif params[:cps_status] != nil
-        @prospects = Prospect.where(cps_status: params[:cps_status])
+      # elsif params[:hcs_status] != nil
+      #   @prospects = Prospect.where(hcs_status: params[:hcs_status])
       elsif params[:search]
         @prospects = Prospect.search(params[:search]).order("created_at DESC")
       elsif

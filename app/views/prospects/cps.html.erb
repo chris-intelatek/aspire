@@ -9,7 +9,7 @@
     </div>
     <div class="prospect-show">
   
-  		<%= simple_form_for @prospect, url: hcs_update_path, method: :post do |f| %>
+  		<%= simple_form_for @prospect, url: cps_update_path, method: :post do |f| %>
   			<%= f.hidden_field :cps_prospect, value: 'true' %>
 
 	      <%= render 'prospects/edit_cps', f: f %>
