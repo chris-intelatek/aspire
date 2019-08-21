@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
   
   def dashboard
-    @prospects = current_user.prospects
+    @prospects = current_user.my_prospects
     @users = User.my_users(current_user)
   end
  

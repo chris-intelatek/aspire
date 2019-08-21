@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
     order(:advisor_first_name).map { |u| [u.advisor_name, u.id] }
   end
 
-  def prospects
+  def my_prospects
     user_ids = (User.my_users(self).pluck(:id) << id).uniq
     Prospect.where(user_id: user_ids)
   end
