@@ -53,6 +53,48 @@
   </div>
   
   <p>&nbsp;</p>
+  
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <h4><strong>Income Goal Calculator</strong></h4>
+      You earn 10 basis points on standard virtual card payments and 5 basis points on non-standard.  This is residual income earned on each business, every month, for as long as they are using our virtual card payments platform.</p>
+      <p>Enter your income goal below to calculate the estimated total number of employees needed to reach your income goal.</p>
+      <script type="text/javascript">
+        function computeAPNeeded(){
+          var incomeGoalAP = document.getElementById('incomeGoalAP').value;
+          var basispoints = 0.0010;
+          var enrolledAP = .30;
+          var avgClientAP = 50000000;
+          var convertedAPNeeded = (incomeGoalAP / basispoints).toFixed(0);
+          var totalAPNeeded = (convertedAPNeeded * 3.333333333).toFixed(0);
+          var apClientsNeeded = (totalAPNeeded / avgClientAP).toFixed(0);
+
+          document.getElementById('convertedAPResult').innerHTML = "*Estimated Total Converted AP Needed = $"+convertedAPNeeded;
+          convertedAPResult = convertedAPResult.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");      
+  
+          totalAPResult = totalAPResult.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          document.getElementById('totalAPResult').innerHTML = "*Total Estimated AP Needed = $"+totalAPNeeded;
+  
+          apClientsResult = apClientsResult.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          document.getElementById('apClientsResult').innerHTML = "*Total Estimated Clients Needed = "+apClientsNeeded;
+        }
+    </script>
+
+    <h4>Annual Income Goal: $&nbsp;<input id="incomeGoalAP" type="number" min="1" max="1000000" onchange="computeAPNeeded()"></h4>
+    <h5 id="convertedAPResult"></h5>
+    <h5 id="totalAPResult"></h5>
+    <h5 id="apClientsResult"></h5>
+
+    <p><font style="font-size: 14px;"><em>* This example assumes an average client has a $50M Annual AP spend, and that we converted 33% to Virtual Card with 100% standard transactions.&nbsp;&nbsp; This is an example only.</em></font></p>
+
+    </div>
+    
+    <div class="col-md-5">
+      <h4><strong>&nbsp</strong></h4>
+      &nbsp;
+    </div>
+  
+  </div>
 
 
 </div>
