@@ -34,8 +34,8 @@ module PagesHelper
     	elsif current_user.group == "ac" || current_user.user_code == "ac"
     	  'Andy Charles<br>andy.charles@aspirepartners.co<br>(207)749-2631'
     	elsif current_user.group == "se" || current_user.user_code == "se" 
-    	  'Stephanie Elad<br>stephanie.elad@aspirepartners.co<br>(858) 735-8904'              	  
-    	elsif  current_user.group == "cn" || current_user.user_code == "cn" 
+    	  'Stephanie Elad<br>stephanie.elad@aspirepartners.co<br>(972) 492-5400'  
+    	elsif  current_user.group == "cn" || current_user.user_code == "cn"
     	   'Chris Napier<br>chris.napier@aspirepartners.co<br>(717) 645-2413'
     	elsif current_user.group == "ajrc" || current_user.user_code == "ajrc" 
     	  'Alan Callaghan<br>alan.callaghan@aspirepartners.co<br>(954) 614-6211'
