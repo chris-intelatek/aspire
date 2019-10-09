@@ -44,7 +44,7 @@
       </div>
       <% end %>
       <p>&nbsp;</p>
-      <em>Caution: Deleting a user will delete all of their prospects and associated comments.</em>
+      <em>Caution: Deleting a user will delete all of their prospects and associated comments. This CANNOT be undone.</em>
   		<div class="links">
     		<%= link_to "Back", :back, class: "btn btn-beige" %> &nbsp;&nbsp;
         <%= link_to "Delete User", user_path(@user), data: { confirm: "Caution: Deleting a user will delete all of their prospects and associated comments." }, method: :delete, class:"btn btn-danger" %>

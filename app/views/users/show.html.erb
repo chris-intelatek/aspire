@@ -3,60 +3,52 @@
   <div class="col-md-4 col-md-offset-4">
   	<div class="panel panel-gray">
       <div class="panel-heading">
-				<div class="row">
-      		<div class="col-md-8">
-        		<h4><%= @user.advisor_first_name + ' ' + @user.advisor_last_name %></h4>      			
-      		</div>
-      		<div class="col-md-4">
-  					<a class="btn btn-slate btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">View/Update Info</a>
-      		</div>
-				</div>
+        <h4><%= @user.advisor_first_name + ' ' + @user.advisor_last_name %></h4>  
       </div>
-			<div class="collapse" id="collapseExample">
-	      <div class="prospect-show">
-	        <table valign="middle">
-	          <tr>
-	            <td>Phone: </td><td> &nbsp; </td><td><%= @user.advisor_phone %></td>
-	          </tr>
-	          <tr>
-	            <td>Mobile: </td><td> &nbsp; </td><td><%= @user.advisor_mobile %></td>    
-	          </tr>
-	          <tr>
-	            <td>Email: </td><td> &nbsp; </td><td><%= @user.email %></td>
-	          </tr>
-	          <tr>
-	            <td>Mailing Address: </td><td> &nbsp; </td><td><%= @user.mailing_address %>
-	          <tr>
-	            <td>Apt/Suite: </td><td> &nbsp; </td><td><%= @user.apt_suite %></td>
-	          </tr>
-	          <tr>
-	            <td>City: </td><td> &nbsp; </td><td><%= @user.city %></td>
-	          </tr>
-	          <tr>
-	            <td>State: </td><td> &nbsp; </td><td><%= @user.state %></td>
-	          </tr>
-	          <tr>
-	            <td>Zip: </td><td> &nbsp; </td><td><%= @user.zip %></td>
-	          </tr>
-	          <tr>
-				      <td>Agreement Date: </td><td> &nbsp; </td><td><%= @user.created_at.strftime("%m/%d/%Y") %></td>               
-	          </tr>
-	          <tr>
-				      <td>Notes: </td><td> &nbsp; </td><td><%= @user.notes %></td>               
-	          </tr>
-	
-	        </table>
-	      </div>
-	    	<div class="panel-footer">
-	    		<div class="links center">
+      <div class="prospect-show">
+        <table valign="middle">
+          <tr>
+            <td>Phone: </td><td> &nbsp; </td><td><%= @user.advisor_phone %></td>
+          </tr>
+          <tr>
+            <td>Mobile: </td><td> &nbsp; </td><td><%= @user.advisor_mobile %></td>    
+          </tr>
+          <tr>
+            <td>Email: </td><td> &nbsp; </td><td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>Mailing Address: </td><td> &nbsp; </td><td><%= @user.mailing_address %>
+          <tr>
+            <td>Apt/Suite: </td><td> &nbsp; </td><td><%= @user.apt_suite %></td>
+          </tr>
+          <tr>
+            <td>City: </td><td> &nbsp; </td><td><%= @user.city %></td>
+          </tr>
+          <tr>
+            <td>State: </td><td> &nbsp; </td><td><%= @user.state %></td>
+          </tr>
+          <tr>
+            <td>Zip: </td><td> &nbsp; </td><td><%= @user.zip %></td>
+          </tr>
+          <tr>
+			      <td>Agreement Date: </td><td> &nbsp; </td><td><%= @user.created_at.strftime("%m/%d/%Y") %></td>               
+          </tr>
+          <tr>
+			      <td>Notes: </td><td> &nbsp; </td><td><%= @user.notes %></td>               
+          </tr>
+        </table>
+      </div>
+    	<div class="panel-footer">
+    		<p><em>Caution: Deleting a user will delete all of their prospects and associated comments. This CANNOT be undone.</em></p>
+    		<div class="center">
+	    		<div class="btn-group center" role="group">
 	    			<%= link_to "Back", users_path, class: "btn btn-beige" %> &nbsp;&nbsp;
+	    		  <%= link_to "Edit User", edit_user_path(@user), class: "btn btn-warning" %>
+	     			<%= link_to "Delete User", user_path(@user), data: { confirm: "Caution: Deleting a user will delete all of their prospects and associated comments." }, method: :delete, class:"btn btn-danger" %>
+	        </div>
+        </div>
+      </div>
 
-	    		  	<%= link_to "Edit User", edit_user_path(@user), class: "btn btn-warning" %>
-
-	          <%#= link_to "Delete User", user_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger" %>
-	    		</div>
-	       </div>
-	    </div>
 	    <% end %>
   	</div>	    
   </div>
