@@ -44,11 +44,12 @@
                 </div>
               </li>
               
-              <% if current_user.has_users? %>
+              <% if current_user.has_users? || current_user.manager? %>
     					  <li><%= link_to users_path do %><i class="fa fa-users"></i>
-                              <% if current_user.manager %> All Agents
-                                <% else %> My Agents
-                              <% end %><% end %></li>
+                  <% if current_user.manager %> All Agents
+                    <% else %> My Agents
+                  <% end %>
+                <% end %></li>
               <% end %>
 
               <li><%= link_to prospects_path, class: 'nav-link' do %><i class="fa fa-crosshairs"></i>
