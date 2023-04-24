@@ -1,4 +1,4 @@
-class AddColumnsToProspect2 < ActiveRecord::Migration
+class AddColumnsToProspect2 < ActiveRecord::Migration[7.0]
   def change
     add_column :prospects, :ap_intro_presentation_date, :date  
     add_column :prospects, :ap_sme_fact_finding_call_date, :date

@@ -1,4 +1,4 @@
-class AddNotesToUsers < ActiveRecord::Migration
+class AddNotesToUsers < ActiveRecord::Migration[7.0]
   def change
     add_column :users, :notes, :text
   end

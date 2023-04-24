@@ -1,4 +1,4 @@
-class RemoveColumnsFromProspects2 < ActiveRecord::Migration
+class RemoveColumnsFromProspects2 < ActiveRecord::Migration[7.0]
   def change
     remove_column :prospects, :new_estimated_health_benefit_cost, :decimal
     remove_column :prospects, :savings_percentage, :decimal
