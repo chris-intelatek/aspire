@@ -1,4 +1,4 @@
-class ChangeApColumnName < ActiveRecord::Migration
+class ChangeApColumnName < ActiveRecord::Migration[7.0]
   def change
     rename_column :prospects, :ap_intro_presentation_date, :cps_intro_presentation_date
     rename_column :prospects, :ap_sme_fact_finding_call_date, :cps_sme_fact_finding_call_date

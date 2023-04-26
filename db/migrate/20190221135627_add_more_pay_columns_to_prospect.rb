@@ -1,4 +1,4 @@
-class AddMorePayColumnsToProspect < ActiveRecord::Migration
+class AddMorePayColumnsToProspect < ActiveRecord::Migration[7.0]
   def change
     add_column :prospects, :pay_intro_presentation_date, :date
     add_column :prospects, :pay_intro_presenter, :string

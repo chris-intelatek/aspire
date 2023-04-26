@@ -1,4 +1,4 @@
-class ChangeIntelatekComumnNamesinProspect < ActiveRecord::Migration
+class ChangeIntelatekComumnNamesinProspect < ActiveRecord::Migration[7.0]
   def change
     rename_column :prospects, :hcs_intelatek_bda, :intelatek_bda
     rename_column :prospects, :hcs_intelatek_notes, :intelatek_notes
